@@ -155,9 +155,9 @@ export default function AboutUsContent() {
     <>
       <Navbar />
       <main>
-        {/* Hero */}
-        <section className="relative overflow-hidden bg-viz-navy pb-20 pt-40 sm:pt-44">
-          <div className="pointer-events-none absolute -left-32 top-10 h-96 w-96 rounded-full bg-viz-primary/30 blur-[120px]" />
+        {/* Hero Section */}
+        <section className="relative overflow-hidden bg-viz-navy pb-10 pt-20 sm:pt-10 lg:pt-20">
+          <div className="pointer-events-none absolute -left-32 top-10 h-100 w-96 rounded-full bg-viz-primary/30 blur-[120px]" />
           <div className="pointer-events-none absolute -right-24 top-40 h-80 w-80 rounded-full bg-viz-accent/20 blur-[100px]" />
 
           <div className="container-viz relative text-center">
@@ -184,10 +184,12 @@ export default function AboutUsContent() {
                   key={title}
                   className="rounded-2xl border border-white/10 bg-white/5 p-5 text-left backdrop-blur-sm"
                 >
-                  <span className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-viz-accent/15 text-viz-accent">
-                    <Icon size={18} />
-                  </span>
-                  <h3 className="mb-1 text-sm font-semibold text-white">{title}</h3>
+                  <div className="flex items-center gap-3 mb-1"> {/* Added a flex container for icon and title */}
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-viz-accent/15 text-viz-accent">
+                      <Icon size={18} />
+                    </span>
+                    <h3 className="text-sm font-semibold text-white">{title}</h3>
+                  </div>
                   <p className="text-xs leading-relaxed text-slate-300">{description}</p>
                 </div>
               ))}
@@ -196,7 +198,7 @@ export default function AboutUsContent() {
         </section>
 
         {/* Our Story */}
-        <section className="py-24 sm:py-28">
+        <section className="py-10 sm:py-10 lg:py-10">
           <div className="container-viz">
             <SectionHeading eyebrow="Our Story" title="Our Story" />
             <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-3">
@@ -214,7 +216,7 @@ export default function AboutUsContent() {
         </section>
 
         {/* Our Belief */}
-        <section className="relative overflow-hidden bg-viz-navy py-24 sm:py-28">
+        <section className="relative overflow-hidden bg-viz-navy py-10 sm:py-10 lg:py-10">
           <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-viz-primary/25 blur-[120px]" />
           <div className="pointer-events-none absolute -left-20 top-0 h-72 w-72 rounded-full bg-viz-accent/15 blur-[100px]" />
 
@@ -236,7 +238,7 @@ export default function AboutUsContent() {
         </section>
 
         {/* Our Values */}
-        <section className="bg-viz-bg-2 py-24 sm:py-28">
+        <section className="bg-viz-bg-2 py-10 sm:py-10 lg:py-10">
           <div className="container-viz">
             <SectionHeading eyebrow="Our Values" title="Our Values" />
             <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -254,7 +256,7 @@ export default function AboutUsContent() {
         </section>
 
         {/* Why We Started */}
-        <section className="py-24 sm:py-28">
+        <section className="py-10 sm:py-10 lg:py-10">
           <div className="container-viz mx-auto max-w-3xl text-center">
             <SectionHeading eyebrow="Why We Started" title="Why We Started" />
             <div className="mt-8 flex flex-col gap-5 text-base leading-relaxed text-viz-paragraph sm:text-lg">
@@ -277,7 +279,7 @@ export default function AboutUsContent() {
         </section>
 
         {/* What We're Building */}
-        <section className="bg-viz-bg-2 py-24 sm:py-28">
+        <section className="bg-viz-bg-2 py-10 sm:py-10 lg:py-10">
           <div className="container-viz">
             <SectionHeading
               eyebrow="What We're Building"
@@ -310,7 +312,7 @@ export default function AboutUsContent() {
         </section>
 
         {/* The Road Ahead */}
-        <section className="py-24 sm:py-28">
+        <section className="py-10 sm:py-10 lg:py-10">
           <div className="container-viz">
             <SectionHeading eyebrow="The Road Ahead" title="The Road Ahead" />
             <div className="mt-16 flex flex-col gap-6">
@@ -337,7 +339,7 @@ export default function AboutUsContent() {
         </section>
 
         {/* Why Viztore Matters */}
-        <section className="bg-viz-bg-2 py-24 sm:py-28">
+        <section className="bg-viz-bg-2 py-10 sm:py-10 lg:py-10">
           <div className="container-viz">
             <SectionHeading eyebrow="Why Viztore Matters" title="Why Viztore Matters" />
             <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -355,7 +357,7 @@ export default function AboutUsContent() {
         </section>
 
         {/* We're Just Getting Started */}
-        <section className="px-5 py-20 sm:px-8 lg:px-10">
+        <section className="px-5 py-10 sm:px-8 lg:px-10">
           <div className="container-viz relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-viz-primary via-blue-700 to-viz-navy px-8 py-16 text-center sm:px-16 sm:py-20">
             <div className="pointer-events-none absolute -left-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
             <div className="pointer-events-none absolute -bottom-20 -right-10 h-72 w-72 rounded-full bg-viz-accent/20 blur-3xl" />

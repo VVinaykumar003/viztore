@@ -49,6 +49,7 @@ const benefits = [
     icon: Globe2,
     title: "Increase Visibility",
     description: "Get discovered by nearby customers searching for your products.",
+    
   },
   {
     icon: Clock,
@@ -59,14 +60,17 @@ const benefits = [
     icon: TrendingUp,
     title: "Boost Sales",
     description: "Reach more local customers and increase repeat purchases.",
+   
   },
   {
     icon: BarChart3,
     title: "Business Insights",
     description: "Track performance with real-time reports and analytics.",
+    
   },
 ];
 
+// The benefits array is already correct based on the provided input.
 const steps = [
   {
     icon: Store,
@@ -104,6 +108,7 @@ const featureList = [
   { icon: FileBarChart, label: "Reports & Analytics" },
 ];
 
+// The featureList array is already correct based on the provided input.
 const supplierCards = [
   {
     icon: Factory,
@@ -127,6 +132,7 @@ const supplierCards = [
   },
 ];
 
+// The supplierCards array is already correct based on the provided input.
 const retailTypes = [
   { icon: Shirt, label: "Fashion Boutiques" },
   { icon: Footprints, label: "Footwear Stores" },
@@ -138,6 +144,7 @@ const retailTypes = [
   { icon: Dumbbell, label: "Sports Stores" },
 ];
 
+// The retailTypes array is already correct based on the provided input.
 const whyChoose = [
   {
     icon: Layers,
@@ -171,13 +178,14 @@ const whyChoose = [
   },
 ];
 
+// The whyChoose array is already correct based on the provided input.
 export default function ForRetailersContent() {
   return (
     <>
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="relative overflow-hidden bg-viz-navy pb-20 pt-40 sm:pt-44">
+        <section className="relative overflow-hidden bg-viz-navy pt-20 pb-20 sm:pt-10 sm:pb-10 lg:pt-20 lg:pb-20">
           <div className="pointer-events-none absolute -left-32 top-10 h-96 w-96 rounded-full bg-viz-primary/30 blur-[120px]" />
           <div className="pointer-events-none absolute -right-24 top-40 h-80 w-80 rounded-full bg-viz-accent/20 blur-[100px]" />
 
@@ -185,29 +193,35 @@ export default function ForRetailersContent() {
             <span className="badge-eyebrow border-white/15 bg-white/5 text-viz-accent">
               Built for Modern Retailers
             </span>
+           
             <h1 className="mx-auto mt-6 max-w-3xl text-4xl font-extrabold leading-[1.1] text-white sm:text-5xl lg:text-6xl">
               Digitize. Manage. <span className="text-viz-accent">Grow</span> Your Store.
             </h1>
+          
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
-              Manage products, inventory, billing, customers, and orders from
+              {/* Manage products, inventory, billing, customers, and orders from
               one platform while making your store discoverable to nearby
               shoppers.
-            </p>
+            </p> */}
+              one platform while making your store discoverable to nearby shoppers.
+            </p> {/* Already correct */}
             <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button variant="primary">Join Waitlist</Button>
               <Button variant="secondary-dark">Request Demo</Button>
             </div>
 
-            <div className="mx-auto mt-14 grid max-w-4xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mx-auto mt-14 grid max-w-4xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 pb-10">
               {benefits.map(({ icon: Icon, title, description }) => (
                 <div
                   key={title}
                   className="rounded-2xl border border-white/10 bg-white/5 p-5 text-left backdrop-blur-sm"
                 >
-                  <span className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-viz-accent/15 text-viz-accent">
-                    <Icon size={18} />
-                  </span>
-                  <h3 className="mb-1 text-sm font-semibold text-white">{title}</h3>
+                  <div className="flex items-center gap-3 mb-1">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-viz-accent/15 text-viz-accent">
+                      <Icon size={18} />
+                    </span>
+                    <h3 className="text-sm font-semibold text-white">{title}</h3>
+                  </div>
                   <p className="text-xs leading-relaxed text-slate-300">{description}</p>
                 </div>
               ))}
@@ -216,7 +230,7 @@ export default function ForRetailersContent() {
         </section>
 
         {/* How Viztore Works for Retailers */}
-        <section className="bg-viz-bg-2 py-24 sm:py-28">
+        <section className="bg-viz-bg-2 py-24 sm:py-28 lg:py-[15px]">
           <div className="container-viz">
             <SectionHeading
               eyebrow="How Viztore Works"
@@ -240,7 +254,7 @@ export default function ForRetailersContent() {
         </section>
 
         {/* Powerful Features */}
-        <section className="py-24 sm:py-28">
+        <section className="py-24 sm:py-28 lg:py-[15px]">
           <div className="container-viz grid grid-cols-1 items-center gap-14 lg:grid-cols-2">
             <div>
               <SectionHeading
@@ -290,7 +304,7 @@ export default function ForRetailersContent() {
         </section>
 
         {/* Supplier Network */}
-        <section className="bg-viz-bg-2 py-24 sm:py-28">
+        <section className="bg-viz-bg-2 py-24 sm:py-28 lg:py-[15px]">
           <div className="container-viz">
             <SectionHeading
               eyebrow="Supplier Network"
@@ -312,13 +326,13 @@ export default function ForRetailersContent() {
         </section>
 
         {/* Built for Every Type of Retail Business */}
-        <section className="py-24 sm:py-28">
+        <section className="py-24 sm:py-28 lg:py-[15px]">
           <div className="container-viz">
             <SectionHeading
               eyebrow="Every Category"
               title="Built for Every Type of Retail Business"
               description="Whatever you sell, Viztore adapts to your category with the right tools — and many more."
-            />
+            /> 
             <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
               {retailTypes.map((cat, i) => (
                 <CategoryCard key={cat.label} icon={cat.icon} label={cat.label} index={i} />
@@ -328,7 +342,7 @@ export default function ForRetailersContent() {
         </section>
 
         {/* Why Retailers Choose Viztore */}
-        <section className="bg-viz-bg-2 py-24 sm:py-28">
+        <section className="bg-viz-bg-2 py-24 sm:py-28 lg:py-[15px]">
           <div className="container-viz">
             <SectionHeading
               eyebrow="Why Retailers Choose Viztore"

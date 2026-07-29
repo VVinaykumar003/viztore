@@ -62,8 +62,9 @@ const whyShop = [
     description: "Know exactly where products are available around you.",
   },
   {
-    icon: Clock,
-    title: "Save Time",
+  
+    icon: Zap, // Changed icon from Clock to Zap based on input "⚡ Save Time"
+    title: " Save Time",
     description: "No more visiting multiple stores to find one product.",
   },
   {
@@ -156,7 +157,7 @@ export default function ForCustomersContent() {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="relative overflow-hidden bg-viz-navy pb-20 pt-40 sm:pt-44">
+         <section className="relative overflow-hidden bg-viz-navy pt-20 pb-20 sm:pt-10 sm:pb-10 lg:pt-20 lg:pb-20">
           <div className="pointer-events-none absolute -left-32 top-10 h-96 w-96 rounded-full bg-viz-primary/30 blur-[120px]" />
           <div className="pointer-events-none absolute -right-24 top-40 h-80 w-80 rounded-full bg-viz-accent/20 blur-[100px]" />
 
@@ -164,7 +165,7 @@ export default function ForCustomersContent() {
             <span className="badge-eyebrow border-white/15 bg-white/5 text-viz-accent">
               Built for Everyday Shoppers
             </span>
-            <h1 className="mx-auto mt-6 max-w-3xl text-4xl font-extrabold leading-[1.1] text-white sm:text-5xl lg:text-6xl">
+            <h1 className="mx-auto mt-6 max-w-4xl text-2xl font-extrabold leading-[1.1] text-white sm:text-5xl lg:text-6xl">
               Discover Local. <span className="text-viz-accent">Shop</span> Smarter.
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
@@ -182,10 +183,12 @@ export default function ForCustomersContent() {
                   key={title}
                   className="rounded-2xl border border-white/10 bg-white/5 p-5 text-left backdrop-blur-sm"
                 >
-                  <span className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-viz-accent/15 text-viz-accent">
-                    <Icon size={18} />
-                  </span>
-                  <h3 className="mb-1 text-sm font-semibold text-white">{title}</h3>
+                  <div className="flex items-center gap-3 mb-1"> {/* Added a flex container for icon and title */}
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-viz-accent/15 text-viz-accent">
+                      <Icon size={18} />
+                    </span>
+                    <h3 className="text-sm font-semibold text-white">{title}</h3>
+                  </div>
                   <p className="text-xs leading-relaxed text-slate-300">{description}</p>
                 </div>
               ))}
@@ -220,7 +223,7 @@ export default function ForCustomersContent() {
             <SectionHeading
               eyebrow="Popular Categories"
               title="Explore Popular Categories"
-              description="Discover products from your favorite local stores across multiple categories — and many more."
+              description="Discover products from your favorite local stores across multiple categories." // Removed "— and many more."
             />
             <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
               {categories.map((cat, i) => (
@@ -271,10 +274,12 @@ export default function ForCustomersContent() {
                   key={title}
                   className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
                 >
-                  <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-viz-accent/15 text-viz-accent">
-                    <Icon size={20} />
-                  </span>
-                  <h3 className="mb-2 text-base font-semibold text-white">{title}</h3>
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-viz-accent/15 text-viz-accent">
+                      <Icon size={20} />
+                    </span>
+                    <h3 className="text-base font-semibold text-white">{title}</h3>
+                  </div>
                   <p className="text-sm leading-relaxed text-slate-300">{description}</p>
                 </div>
               ))}

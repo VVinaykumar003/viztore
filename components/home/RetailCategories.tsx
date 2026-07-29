@@ -2,30 +2,26 @@
 
 import {
   Shirt,
-  Carrot,
   Cpu,
   Gem,
-  Home,
   Sparkles,
   Dumbbell,
   Gift,
-  Pill,
   Sofa,
+  Footprints, // Added for Footwear
 } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import CategoryCard from "@/components/ui/CategoryCard";
 
 const categories = [
   { icon: Shirt, label: "Fashion" },
-  { icon: Carrot, label: "Grocery" },
-  { icon: Cpu, label: "Electronics" },
+  { icon: Footprints, label: "Footwear" },
   { icon: Gem, label: "Jewellery" },
-  { icon: Home, label: "Home" },
-  { icon: Sparkles, label: "Beauty" },
-  { icon: Dumbbell, label: "Sports" },
-  { icon: Gift, label: "Gift Shop" },
-  { icon: Pill, label: "Pharmacy" },
-  { icon: Sofa, label: "Furniture" },
+  { icon: Cpu, label: "Electronics" },
+  { icon: Sofa, label: "Home & Living" },
+  { icon: Sparkles, label: "Beauty & Personal Care" },
+  { icon: Gift, label: "Gifts & Lifestyle" },
+  { icon: Dumbbell, label: "Sports & Fitness" },
 ];
 
 export default function RetailCategories() {

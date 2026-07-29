@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link"; // Import Link for redirection
 import {
   Package,
   Boxes,
@@ -11,16 +12,23 @@ import {
   Truck,
   Handshake,
   Network,
+  Users, // Added for Customer Management
+  Globe, // Added for Online Storefront
+  MapPinned, // Added for Local Discovery
+  ArrowRightCircle, // Added for "Explore All" button
 } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 
 const featureList = [
-  { icon: Package, label: "Product Management" },
-  { icon: Boxes, label: "Inventory" },
-  { icon: Receipt, label: "Billing" },
-  { icon: ClipboardList, label: "Orders" },
-  { icon: FileBarChart, label: "Reports" },
-  { icon: BarChart3, label: "Analytics" },
+  { icon: Package, label: "Product Catalog", type: "feature" },
+  { icon: Boxes, label: "Inventory Tracking", type: "feature" },
+  { icon: Receipt, label: "Billing & Invoicing", type: "feature" },
+  { icon: Users, label: "Customer Management", type: "feature" },
+  { icon: Globe, label: "Online Storefront", type: "feature" },
+  { icon: MapPinned, label: "Local Discovery", type: "feature" },
+  // The remaining features (Order Management, Hyperlocal Delivery, Reports & Analytics) are now covered by "Explore All Features"
+  // This ensures 6 regular features + 1 "Explore All" link, totaling 7 items.
+  { icon: ArrowRightCircle, label: "Explore All Features", type: "link", href: "/features" },
 ];
 
 const supplierCards = [
@@ -48,19 +56,33 @@ export default function Features() {
             transition={{ duration: 0.6 }}
             className="flex flex-col gap-3"
           >
-            {featureList.map(({ icon: Icon, label }) => (
-              <div
-                key={label}
-                className="flex items-center gap-3 rounded-2xl border border-viz-border bg-white px-5 py-4 shadow-sm"
-              >
-                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-viz-primary/10 text-viz-primary">
-                  <Icon size={18} />
-                </span>
-                <span className="text-sm font-medium text-viz-heading">
-                  {label}
-                </span>
-              </div>
-            ))}
+            {featureList.map((feature) => {
+              const Icon = feature.icon;
+              if (feature.type === "link") {
+                return (
+                  <Link
+                    key={feature.label}
+                    href={feature.href || "#"} // Ensure href is defined for Link
+                    className="flex items-center justify-between gap-3 rounded-2xl border border-viz-primary bg-viz-primary px-5 py-4 shadow-sm transition-colors hover:bg-viz-primary/90"
+                  >
+                    <span className="text-sm font-medium text-white">
+                      {feature.label}
+                    </span>
+                    <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/20 text-white">
+                      <Icon size={18} />
+                    </span>
+                  </Link>
+                );
+              }
+              return (
+                <div key={feature.label} className="flex items-center gap-3 rounded-2xl border border-viz-border bg-white px-5 py-4 shadow-sm">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-viz-primary/10 text-viz-primary">
+                    <Icon size={18} />
+                  </span>
+                  <span className="text-sm font-medium text-viz-heading">{feature.label}</span>
+                </div>
+              );
+}) }
           </motion.div>
 
           {/* Center - dashboard mockup */}

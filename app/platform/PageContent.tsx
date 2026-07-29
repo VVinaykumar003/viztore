@@ -66,8 +66,8 @@ const ecosystem = [
 const pillars = [
   {
     icon: Store,
-    title: "🏪 Retail Operations",
-    subtitle: "Run your store with confidence.",
+    title: "Retail Operations",
+    subtitle: "Run your store with confidence.", // Removed emoji from title
     items: [
       "Product Management",
       "Inventory",
@@ -81,8 +81,8 @@ const pillars = [
   },
   {
     icon: ShoppingBag,
-    title: "🛍 Customer Experience",
-    subtitle: "Make local shopping effortless.",
+    title: "Customer Experience",
+    subtitle: "Make local shopping effortless.", // Removed emoji from title
     items: [
       "Product Search",
       "Nearby Discovery",
@@ -96,8 +96,8 @@ const pillars = [
   },
   {
     icon: Globe2,
-    title: "🌍 Commerce Network",
-    subtitle: "Connect beyond your storefront.",
+    title: "Commerce Network",
+    subtitle: "Connect beyond your storefront.", // Removed emoji from title
     items: [
       "Local Search",
       "Global Search",
@@ -111,8 +111,8 @@ const pillars = [
   },
   {
     icon: TrendingUp,
-    title: "🚀 Business Growth",
-    subtitle: "Grow beyond daily operations.",
+    title: "Business Growth",
+    subtitle: "Grow beyond daily operations.", // Removed emoji from title
     items: [
       "Analytics",
       "Marketing Campaigns",
@@ -128,37 +128,37 @@ const pillars = [
 
 const highlights = [
   {
-    icon: Package,
+    icon: Package, // 📦
     title: "Retail Operations",
     description: "Manage your entire business from one dashboard.",
   },
   {
-    icon: Search,
+    icon: Search, // 🔍
     title: "Smart Discovery",
     description: "Help customers discover products nearby through intelligent search.",
   },
   {
-    icon: Globe2,
+    icon: Globe2, // 🌍
     title: "Local + Global Search",
     description: "Find products nearby first, then expand across the Viztore network when needed.",
   },
   {
-    icon: Factory,
+    icon: Factory, // 🏭
     title: "Supplier Network",
     description: "Compare wholesalers, discover suppliers, and place bulk purchase orders.",
   },
   {
-    icon: Truck,
+    icon: Truck, // 🚚
     title: "Hyperlocal Commerce",
     description: "Support reservation, pickup, and local delivery from one platform.",
   },
   {
-    icon: Code2,
+    icon: Code2, // 🔗
     title: "Integrations",
     description: "Payments, GST, WhatsApp, Tally, SMS, Shipping Partners.",
   },
   {
-    icon: TrendingUp,
+    icon: TrendingUp, // 📈
     title: "Growth Tools",
     description: "Analytics, campaigns, CRM, and customer retention.",
   },
@@ -174,27 +174,27 @@ const searchFlow = [
 
 const businesses = [
   { icon: Shirt, label: "Fashion" },
-  { icon: Footprints, label: "Footwear" },
+  { icon: Footprints, label: "Footwear" }, // Footwear
   { icon: Cpu, label: "Electronics" },
   { icon: Gem, label: "Jewellery" },
   { icon: Sparkles, label: "Beauty" },
   { icon: Home, label: "Home & Living" },
   { icon: Dumbbell, label: "Sports" },
   { icon: Gift, label: "Gifts" },
-  { icon: Sofa, label: "Furniture" },
-  { icon: BookOpenText, label: "Books" },
-  { icon: PawPrint, label: "Pet" },
-  { icon: Layers, label: "More..." },
+  { icon: Sofa, label: "Furniture" }, // Furniture
+  { icon: BookOpenText, label: "Books" }, // Books
+  { icon: PawPrint, label: "Pet" }, // Pet
+  { icon: Layers, label: "More..." }, // More...
 ];
 
 const integrations = [
-  { icon: CreditCard, label: "Payment" },
-  { icon: FileText, label: "GST" },
-  { icon: ShipWheel, label: "Shipping" },
-  { icon: Calculator, label: "Accounting" },
-  { icon: MessageCircle, label: "WhatsApp" },
-  { icon: Wifi, label: "SMS" },
-  { icon: Mail, label: "Email" },
+  { icon: CreditCard, label: "Payment" }, // Payment
+  { icon: FileText, label: "GST" }, // GST
+  { icon: ShipWheel, label: "Shipping" }, // Shipping
+  { icon: Calculator, label: "Accounting" }, // Accounting
+  { icon: MessageCircle, label: "WhatsApp" }, // WhatsApp
+  { icon: Wifi, label: "SMS" }, // SMS
+  { icon: Mail, label: "Email" }, // Email
 ];
 
 export default function PlatformContent() {
@@ -203,7 +203,7 @@ export default function PlatformContent() {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="relative overflow-hidden bg-viz-navy pb-20 pt-40 sm:pt-44">
+        <section className="relative overflow-hidden bg-viz-navy pb-20 pt-40 sm:pt-44 lg:pt-[150px]">
           <div className="pointer-events-none absolute -left-32 top-10 h-96 w-96 rounded-full bg-viz-primary/30 blur-[120px]" />
           <div className="pointer-events-none absolute -right-24 top-40 h-80 w-80 rounded-full bg-viz-accent/20 blur-[100px]" />
 
@@ -315,7 +315,7 @@ export default function PlatformContent() {
             <SectionHeading
               light
               eyebrow="Smart Search, Not Just a Feature"
-              title="One Search. Endless Possibilities."
+              title="One Search. Endless Possibilities." // Ye sirf ek feature hai. Hero nahi.
               description="This is a single connected feature within Viztore — not the hero of the platform, but one of many pieces that work together."
             />
             <div className="mt-14 flex flex-wrap items-center justify-center gap-4">
@@ -382,10 +382,10 @@ export default function PlatformContent() {
 
             <div className="relative z-10 mx-auto max-w-2xl">
               <h2 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl">
-                Ready to Transform Local Retail?
+                Ready to Transform Local Retail? // CTA Heading
               </h2>
               <p className="mt-5 text-base text-blue-100 sm:text-lg">
-                Join the platform connecting retailers, customers, and
+                Join the platform connecting retailers, customers, and // CTA Description
                 suppliers on one commerce network.
               </p>
               <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">

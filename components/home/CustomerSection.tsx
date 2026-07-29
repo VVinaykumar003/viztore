@@ -1,8 +1,80 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Apple, PlayCircle, QrCode, MapPin, Bike } from "lucide-react";
+import { MapPin, Bike, Search, Package, Scale, ShoppingBag, Zap} from "lucide-react";
 import GlassCard from "@/components/ui/GlassCard";
+import { useState } from "react";
+
+const customerFeatures = [
+  {
+    icon: Search,
+    title: "Search Products, Not Stores",
+    description:
+      "Find exactly what you need without visiting multiple shops.",
+  },
+  {
+    icon: MapPin,
+    title: "Discover Nearby Stores",
+    description:
+      "Instantly see which local stores have the product you're looking for.",
+  },
+  {
+    icon: Package,
+    title: "Check Real-Time Availability",
+    description:
+      "Know what's in stock before you leave home.",
+  },
+  {
+    icon: Scale,
+    title: "Compare Nearby Options",
+    description:
+      "Compare availability, price, distance, and convenience.",
+  },
+  {
+    icon: ShoppingBag,
+    title: "Reserve, Pickup or Delivery",
+    description:
+      "Reserve products, pick them up, or choose local delivery.",
+  },
+  {
+    icon: Zap,
+    title: "Faster Local Shopping",
+    description:
+      "Get products from nearby retailers without waiting days for shipping.",
+  },
+];
+
+// Helper component for a feature card
+function FeatureCard({ icon: Icon, title, description }: typeof customerFeatures[0]) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <motion.div // Wrap GlassCard with motion.div to apply hover animations
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      initial={{ y: 0 }}
+      whileHover={{ y: -5 }} // Slight lift on hover
+      transition={{ duration: 0.2 }}
+      className="relative cursor-pointer" // Add relative and cursor-pointer for better UX
+    >
+      <GlassCard className="flex flex-col items-start gap-3 !p-6 h-full"> {/* Ensure GlassCard takes full height */}
+        <div className="flex items-center gap-3">
+          <Icon size={24} className="text-viz-accent" />
+          <h3 className="text-lg font-semibold text-white">{title}</h3>
+        </div>
+        <motion.p
+          className={`text-sm text-slate-300 mt-2 ${isHovered ? 'bg-viz-navy/50 rounded-md p-2' : ''}`} // Add background and padding on hover
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: isHovered ? "auto" : 0, opacity: isHovered ? 1 : 0 }}
+          transition={{ duration: 0.3 }}
+          style={{ overflow: 'hidden' }} // Hide overflow during height animation
+        >
+          {description}
+        </motion.p>
+      </GlassCard>
+    </motion.div>
+  );
+}
 
 export default function CustomerSection() {
   return (
@@ -34,30 +106,11 @@ export default function CustomerSection() {
             need — fast.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <button className="flex items-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-white backdrop-blur-md transition-colors hover:bg-white/10">
-              <PlayCircle size={20} className="text-viz-accent" />
-              <span className="text-left leading-tight">
-                <span className="block text-[10px] text-slate-400">
-                  GET IT ON
-                </span>
-                <span className="block text-sm font-semibold">
-                  Google Play
-                </span>
-              </span>
-            </button>
-            <button className="flex items-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-white backdrop-blur-md transition-colors hover:bg-white/10">
-              <Apple size={20} className="text-viz-accent" />
-              <span className="text-left leading-tight">
-                <span className="block text-[10px] text-slate-400">
-                  DOWNLOAD ON THE
-                </span>
-                <span className="block text-sm font-semibold">App Store</span>
-              </span>
-            </button>
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white">
-              <QrCode size={30} className="text-viz-navy" />
-            </div>
+          {/* New section for features */}
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {customerFeatures.map((feature, index) => (
+              <FeatureCard key={index} {...feature} />
+            ))}
           </div>
         </motion.div>
 

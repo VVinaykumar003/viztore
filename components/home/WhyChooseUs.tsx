@@ -1,46 +1,46 @@
 "use client";
 
 import {
-  ShieldCheck,
-  Zap,
+  Globe, // For "Beyond Retail Software"
   MapPinned,
-  Wallet,
-  HeadphonesIcon,
+  Layers, // For "One Platform, Multiple Channels"
+  Rocket, // For "Built for Modern Retail"
   TrendingUp,
+  Link, // For "Everything Connected"
 } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import FeatureCard from "@/components/ui/FeatureCard";
 
 const reasons = [
   {
-    icon: Zap,
-    title: "Fast Setup",
-    description: "Get your store online in under 15 minutes, no coding needed.",
+    icon: Globe,
+    title: "Beyond Retail Software",
+    description: "Manage your business while making your store digitally discoverable.",
   },
   {
     icon: MapPinned,
-    title: "Hyperlocal Discovery",
-    description: "Show up exactly when nearby customers are looking for you.",
+    title: "Built for Local Commerce",
+    description: "Connect with nearby customers actively searching for your products.",
   },
   {
-    icon: Wallet,
-    title: "Simple Billing",
-    description: "Invoicing, payments and reports handled in one clean flow.",
+    icon: Layers,
+    title: "One Platform, Multiple Channels",
+    description: "Manage walk-in sales, online discovery, pickup, and local delivery from one place.",
   },
   {
-    icon: ShieldCheck,
-    title: "Secure & Reliable",
-    description: "Your store data is encrypted and backed up around the clock.",
+    icon: Rocket,
+    title: "Built for Modern Retail",
+    description: "Modern tools designed to simplify operations and accelerate business growth.",
   },
   {
     icon: TrendingUp,
-    title: "Growth Insights",
-    description: "Understand what sells and make confident restocking decisions.",
+    title: "Turn Visibility Into Growth",
+    description: "Get discovered by more customers and convert searches into sales.",
   },
   {
-    icon: HeadphonesIcon,
-    title: "Real Support",
-    description: "A real team ready to help you set up and grow your store.",
+    icon: Link,
+    title: "Everything Connected",
+    description: "Products, inventory, billing, customers, orders, and analytics—working together seamlessly.",
   },
 ];
 
@@ -49,9 +49,9 @@ export default function WhyChooseUs() {
     <section id="why-choose-us" className="py-24 sm:py-28">
       <div className="container-viz">
         <SectionHeading
-          eyebrow="Why Viztore"
-          title="Why local retailers choose Viztore"
-          description="A platform built specifically for the way local stores actually work."
+          eyebrow="Why Viztore" // Keeping the eyebrow as it is
+          title="Why Viztore is the Future of Local Retail"
+          description="Discover how Viztore empowers local businesses to thrive in the digital age."
         />
 
         <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

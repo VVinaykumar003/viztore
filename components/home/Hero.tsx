@@ -1,9 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Eye, Boxes, TrendingUp, BarChart3, MapPin, Bike } from "lucide-react";
-import Button from "@/components/ui/Button";
-import GlassCard from "@/components/ui/GlassCard";
+import { Eye, Boxes, TrendingUp, BarChart3 } from "lucide-react";
 import Image from "next/image";
 
 const features = [
@@ -23,11 +21,9 @@ export default function Hero() {
     bg-gradient-to-br
     from-[#020A2A]
     via-[#061755]
-    to-[#0A225F]
-    pb-24
+    to-[#0A225F]    
     pt-24
     sm:pt-70
-    lg:pb-24
   "
 >
   {/* Blue Glow */}
@@ -39,61 +35,17 @@ export default function Hero() {
   {/* Yellow Accent Glow */}
   <div className="pointer-events-none absolute right-32 bottom-10 h-56 w-56 rounded-full bg-[#FACB0A]/10 blur-[120px]" />
 
-  <div className="container-viz relative grid grid-cols-1 items-center gap-16   lg:grid-cols-2"> 
-        {/* Left column */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          
-        >
-          <span className="badge-eyebrow border-white/15 bg-white/5 text-viz-accent">
-            FOR RETAILERS
-          </span>
-
-          <h1 className="mt-6 text-4xl font-extrabold leading-[1.1] text-white sm:text-5xl lg:text-6xl">
-            Digitize.
-            <br />
-            Manage.
-            <br />
-            <span className="text-viz-accent">Grow</span> Your Store.
-          </h1>
-
-          <p className="mt-6 max-w-lg text-base leading-relaxed text-slate-300 sm:text-lg">
-            Viztore brings your entire store online in minutes — manage
-            inventory, orders and billing, and get discovered by customers
-            searching for what you sell nearby.
-          </p>
-
-          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
-            {features.map(({ icon: Icon, label }) => (
-              <div
-                key={label}
-                className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 backdrop-blur-sm"
-              >
-                <Icon size={16} className="shrink-0 text-viz-accent" />
-                <span className="text-xs font-medium text-slate-200">
-                  {label}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Button variant="primary">Join Waitlist</Button>
-            <Button variant="secondary-dark">Request Demo</Button>
-          </div>
-        </motion.div>
-
+  <div className="relative grid grid-cols-1 items-center gap-16 lg:grid-cols-1"> 
+    
                 {/* Right column - phone mockup */}
                   <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative w-full h-full min-h-[440px] lg:w-full lg:min-h-[640px]  rounded-lg"
+              className="relative w-full h-full min-h-[440px] lg:min-h-[640px] rounded-lg"
             >
               <Image
-                src="/images/desktopImage.png"
+                src="/images/w_desktop_image.png"
                 alt="Viztore Dashboard"
                 fill
                 priority

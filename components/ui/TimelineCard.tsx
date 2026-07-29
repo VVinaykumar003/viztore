@@ -38,7 +38,7 @@ export default function TimelineCard({
         </span>
       </div>
       <h3 className="mb-2 text-base font-semibold text-viz-heading">{title}</h3>
-      <p className="max-w-[220px] text-sm leading-relaxed text-viz-paragraph">
+      <p className="max-w-[220px] text-xs leading-relaxed text-viz-paragraph">
         {description}
       </p>
     </motion.div>
