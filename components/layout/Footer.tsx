@@ -23,8 +23,8 @@ const columns = [
     title: "Contact",
     links: [
       { label: "support@viztore.com", href: "mailto:support@viztore.com" },
-      { label: "+91 98765 43210", href: "tel:+919876543210" },
-      { label: "Raipur, India", href: "#" },
+      { label: "+91 9407655717", href: "tel:+919876543210" },
+      { label: "Durg, India", href: "#" },
     ],
   },
 ];
@@ -48,7 +48,7 @@ export default function Footer() {
               Making Local Retail Visible. Helping local retailers digitize
               their business and helping customers discover what&apos;s nearby.
             </p>
-            <div className="flex gap-3">
+            {/* <div className="flex gap-3">
               {[Twitter, Instagram, Linkedin, Facebook].map((Icon, i) => (
                 <a
                   key={i}
@@ -59,7 +59,7 @@ export default function Footer() {
                   <Icon size={16} />
                 </a>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {columns.map((col) => (
@@ -83,19 +83,19 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-8 sm:flex-row">
+     <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-8 sm:flex-row">
           <p className="text-xs text-slate-500">
             © {new Date().getFullYear()} Viztore. All rights reserved.
           </p>
-          <div className="flex gap-6 text-xs text-slate-500">
+          {/* <div className="flex gap-6 text-xs text-slate-500">
             <a href="#" className="hover:text-slate-300">
               Privacy Policy
             </a>
             <a href="#" className="hover:text-slate-300">
               Terms of Service
             </a>
-          </div>
-        </div>
+          </div> */}
+        </div> 
       </div>
     </footer>
   );

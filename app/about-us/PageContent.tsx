@@ -1,5 +1,5 @@
 "use client";
-
+import { motion } from "framer-motion";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -23,21 +23,22 @@ import {
   UserCheck,
   MapPin,
 } from "lucide-react";
+import PageHero from "@/components/ui/PageHero";
 
 
 const heroHighlights = [
   {
-    icon: Store,
+    icon: "Store",
     title: "Built for Local Businesses",
     description: "Designed specifically for independent retailers and growing brands.",
   },
   {
-    icon: Globe2,
+    icon: "Globe2",
     title: "Made for India",
     description: "Built to solve the real challenges of India's retail ecosystem.",
   },
   {
-    icon: Rocket,
+    icon: "Rocket",
     title: "Future Ready",
     description: "Creating the technology powering the next generation of local commerce.",
   },
@@ -156,46 +157,23 @@ export default function AboutUsContent() {
       <Navbar />
       <main>
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-viz-navy pb-10 pt-20 sm:pt-10 lg:pt-20">
-          <div className="pointer-events-none absolute -left-32 top-10 h-100 w-96 rounded-full bg-viz-primary/30 blur-[120px]" />
-          <div className="pointer-events-none absolute -right-24 top-40 h-80 w-80 rounded-full bg-viz-accent/20 blur-[100px]" />
+       
 
-          <div className="container-viz relative text-center">
-            <span className="badge-eyebrow border-white/15 bg-white/5 text-viz-accent">
-              About Viztore
-            </span>
-            <h1 className="mx-auto mt-6 max-w-3xl text-4xl font-extrabold leading-[1.1] text-white sm:text-5xl lg:text-6xl">
-              Building the Future of <span className="text-viz-accent">Local Retail</span>.
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
-              Viztore is building a connected retail commerce platform that
+        <PageHero
+          badge="About Viztore"
+          heading=" Building the Future of."
+          highlight="Local Retail."
+          description=" Viztore is building a connected retail commerce platform that
               helps local retailers digitize their businesses, makes products
               instantly discoverable, and creates a better shopping experience
-              for customers.
-            </p>
-            <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button variant="primary">Join Our Mission</Button>
-              <Button variant="secondary-dark">Explore Platform</Button>
-            </div>
+              for customers."
+          primaryLabel="Join Waitlist"
+          secondaryLabel="Request Demo"
+          benefits={heroHighlights || []}
+        />
 
-            <div className="mx-auto mt-14 grid max-w-4xl grid-cols-1 gap-5 sm:grid-cols-3">
-              {heroHighlights.map(({ icon: Icon, title, description }) => (
-                <div
-                  key={title}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-5 text-left backdrop-blur-sm"
-                >
-                  <div className="flex items-center gap-3 mb-1"> {/* Added a flex container for icon and title */}
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-viz-accent/15 text-viz-accent">
-                      <Icon size={18} />
-                    </span>
-                    <h3 className="text-sm font-semibold text-white">{title}</h3>
-                  </div>
-                  <p className="text-xs leading-relaxed text-slate-300">{description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+
+
 
         {/* Our Story */}
         <section className="py-10 sm:py-10 lg:py-10">
@@ -216,64 +194,114 @@ export default function AboutUsContent() {
         </section>
 
         {/* Our Belief */}
-        <section className="relative overflow-hidden bg-viz-navy py-10 sm:py-10 lg:py-10">
-          <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-viz-primary/25 blur-[120px]" />
-          <div className="pointer-events-none absolute -left-20 top-0 h-72 w-72 rounded-full bg-viz-accent/15 blur-[100px]" />
+       <section className="relative overflow-hidden bg-viz-navy py-20 sm:py-24 lg:py-28">
+  <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-viz-primary/25 blur-[120px]" />
+  <div className="pointer-events-none absolute -left-20 top-0 h-72 w-72 rounded-full bg-viz-accent/15 blur-[100px]" />
 
-          <div className="container-viz relative mx-auto max-w-2xl text-center">
-            <span className="badge-eyebrow border-white/15 bg-white/5 text-viz-accent">
-              Our Belief
-            </span>
-            <div className="mt-6 flex flex-col gap-3 text-lg leading-relaxed text-slate-200 sm:text-xl">
-              <p>Local retail has never lacked products.</p>
-              <p>It has lacked visibility.</p>
-              <p>Customers shouldn&apos;t have to guess where products are available.</p>
-              <p>Retailers shouldn&apos;t lose sales because they aren&apos;t digitally discoverable.</p>
-              <p>Technology should make local commerce simpler, smarter, and more connected.</p>
-              <p className="mt-4 text-2xl font-bold text-white">
-                That&apos;s why Viztore exists.
-              </p>
-            </div>
-          </div>
-        </section>
+  <div className="container-viz relative">
+    <div className="mx-auto max-w-4xl">
+      <span className="badge-eyebrow border-white/15 bg-white/5 text-viz-accent">
+        Our Belief
+      </span>
 
-        {/* Our Values */}
-        <section className="bg-viz-bg-2 py-10 sm:py-10 lg:py-10">
-          <div className="container-viz">
-            <SectionHeading eyebrow="Our Values" title="Our Values" />
-            <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {values.map((item, i) => (
-                <FeatureCard
-                  key={item.title}
-                  icon={item.icon}
-                  title={item.title}
-                  description={item.description}
-                  index={i}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
+      <div className="mt-10 flex gap-6 sm:gap-10">
+        {/* Vertical accent line */}
+        <div className="mt-2 hidden w-1 shrink-0 rounded-full bg-gradient-to-b from-viz-accent via-viz-primary to-transparent sm:block" />
+
+        <div className="flex flex-col gap-4">
+          <p className="text-lg leading-snug text-slate-400 sm:text-xl">
+            Local retail has never lacked products.
+          </p>
+          <p className="text-xl font-medium leading-snug text-slate-300 sm:text-2xl">
+            It has lacked <span className="text-viz-accent">visibility</span>.
+          </p>
+          <p className="text-xl font-medium leading-snug text-slate-200 sm:text-2xl">
+            Customers shouldn&apos;t have to guess where products are available.
+          </p>
+          <p className="text-xl font-medium leading-snug text-slate-200 sm:text-2xl">
+            Retailers shouldn&apos;t lose sales because they aren&apos;t{" "}
+            <span className="text-viz-accent">digitally discoverable</span>.
+          </p>
+          <p className="text-xl font-medium leading-snug text-white sm:text-2xl">
+            Technology should make local commerce simpler, smarter, and more connected.
+          </p>
+
+          <p className="mt-6 text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl">
+            That&apos;s why <span className="text-viz-accent">Viztore</span> exists.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+        
+      {/* Our Values */}
+<section className="bg-viz-bg-2 py-10 sm:py-10 lg:py-10">
+  <div className="container-viz">
+    <SectionHeading eyebrow="Our Values" title="Our Values" />
+
+    <div className="mt-16 flex flex-wrap justify-center gap-6">
+      {values.map((item, i) => (
+        <div
+          key={item.title}
+          className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
+        >
+          <FeatureCard
+            icon={item.icon}
+            title={item.title}
+            description={item.description}
+            index={i}
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
 
         {/* Why We Started */}
-        <section className="py-10 sm:py-10 lg:py-10">
+        <section className="bg-viz-bg-2 py-24 sm:py-28 lg:py-[15px]">
           <div className="container-viz mx-auto max-w-3xl text-center">
             <SectionHeading eyebrow="Why We Started" title="Why We Started" />
-            <div className="mt-8 flex flex-col gap-5 text-base leading-relaxed text-viz-paragraph sm:text-lg">
-              <p>
-                Retail is changing, but millions of local stores are still
-                disconnected from the digital economy.
-              </p>
-              <p>
-                Large marketplaces have transformed online shopping, yet
-                discovering products available in nearby stores remains
-                surprisingly difficult.
-              </p>
-              <p>
-                Viztore was created to bridge this gap — helping retailers
-                become digitally visible while giving customers a smarter way
-                to discover, compare, and shop locally.
-              </p>
+            <div className="mt-16 grid grid-cols-1 gap-6">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+                className="rounded-3xl border border-viz-border bg-white p-6 shadow-sm text-base leading-relaxed text-viz-paragraph sm:text-lg"
+              >
+                <p>
+                  Retail is changing, but millions of local stores are still
+                  disconnected from the digital economy.
+                </p>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+                className="rounded-3xl border border-viz-border bg-white p-6 shadow-sm text-base leading-relaxed text-viz-paragraph sm:text-lg"
+              >
+                <p>
+                  Large marketplaces have transformed online shopping, yet
+                  discovering products available in nearby stores remains
+                  surprisingly difficult.
+                </p>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
+                className="rounded-3xl border border-viz-border bg-white p-6 shadow-sm text-base leading-relaxed text-viz-paragraph sm:text-lg"
+              >
+                <p>
+                  Viztore was created to bridge this gap — helping retailers
+                  become digitally visible while giving customers a smarter way
+                  to discover, compare, and shop locally.
+                </p>
+              </motion.div>
             </div>
           </div>
         </section>
@@ -312,31 +340,49 @@ export default function AboutUsContent() {
         </section>
 
         {/* The Road Ahead */}
-        <section className="py-10 sm:py-10 lg:py-10">
-          <div className="container-viz">
-            <SectionHeading eyebrow="The Road Ahead" title="The Road Ahead" />
-            <div className="mt-16 flex flex-col gap-6">
-              {roadmap.map((step, i) => (
-                <div
-                  key={step.phase}
-                  className="flex flex-col items-start gap-4 rounded-2xl border border-viz-border bg-white p-6 shadow-sm sm:flex-row sm:items-center"
-                >
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-viz-primary text-sm font-bold text-white">
-                    {i + 1}
-                  </span>
-                  <div>
-                    <h3 className="text-sm font-semibold uppercase tracking-wide text-viz-primary">
-                      {step.phase}
-                    </h3>
-                    <p className="mt-1 text-sm text-viz-paragraph sm:text-base">
-                      {step.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
+      <section className="py-10 sm:py-10 lg:py-10">
+  <div className="container-viz">
+    <SectionHeading eyebrow="The Road Ahead" title="The Road Ahead" />
+
+    <div className="mt-16 relative">
+      {/* Center line (desktop) / Left line (mobile) */}
+      <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 bg-viz-border" />
+
+      <div className="flex flex-col gap-10">
+        {roadmap.map((step, i) => {
+          const isEven = i % 2 === 0;
+          return (
+            <div
+              key={step.phase}
+              className={`relative flex flex-col sm:flex-row items-start sm:items-center pl-12 sm:pl-0 ${
+                isEven ? "sm:flex-row" : "sm:flex-row-reverse"
+              }`}
+            >
+              {/* Timeline dot */}
+              <div className="absolute left-4 sm:left-1/2 top-0 sm:top-1/2 flex h-8 w-8 -translate-x-1/2 sm:-translate-y-1/2 items-center justify-center rounded-full bg-viz-primary text-sm font-bold text-white z-10 ring-4 ring-white">
+                {i + 1}
+              </div>
+
+              {/* Card content */}
+              <div
+                className={`w-full sm:w-[calc(50%-2rem)] rounded-2xl border border-viz-border bg-white p-6 shadow-sm ${
+                  isEven ? "sm:mr-auto sm:text-right" : "sm:ml-auto sm:text-left"
+                }`}
+              >
+                <h3 className="text-sm font-semibold uppercase tracking-wide text-viz-primary">
+                  {step.phase}
+                </h3>
+                <p className="mt-1 text-sm text-viz-paragraph sm:text-base">
+                  {step.description}
+                </p>
+              </div>
             </div>
-          </div>
-        </section>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</section>
 
         {/* Why Viztore Matters */}
         <section className="bg-viz-bg-2 py-10 sm:py-10 lg:py-10">
@@ -356,35 +402,7 @@ export default function AboutUsContent() {
           </div>
         </section>
 
-        {/* We're Just Getting Started */}
-        <section className="px-5 py-10 sm:px-8 lg:px-10">
-          <div className="container-viz relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-viz-primary via-blue-700 to-viz-navy px-8 py-16 text-center sm:px-16 sm:py-20">
-            <div className="pointer-events-none absolute -left-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-20 -right-10 h-72 w-72 rounded-full bg-viz-accent/20 blur-3xl" />
-
-            <div className="relative z-10 mx-auto max-w-2xl">
-              <h2 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl">
-                We&apos;re Just Getting Started
-              </h2>
-              <p className="mt-5 text-base text-blue-100 sm:text-lg">
-                Viztore is at the beginning of an ambitious journey to
-                transform how local retail works. We&apos;re continuously
-                learning from retailers, improving our platform, and building
-                technology that makes local commerce more connected,
-                efficient, and accessible for everyone.
-              </p>
-              <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <Button
-                  variant="primary"
-                  className="!bg-viz-accent !text-viz-navy !shadow-amber-400/30 hover:!bg-amber-300"
-                >
-                  Join Our Mission
-                </Button>
-                <Button variant="secondary-dark">Explore Platform</Button>
-              </div>
-            </div>
-          </div>
-        </section>
+    
       </main>
       <Footer />
     </>

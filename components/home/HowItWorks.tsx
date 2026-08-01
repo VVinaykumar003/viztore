@@ -1,10 +1,10 @@
 "use client";
 
-import { Store, PackagePlus, ScanLine, Rocket, LineChart, MapPinned } from "lucide-react";
+import { Store, PackagePlus, ScanLine, Rocket, LineChart, MapPinned, Search, Eye, Scale, ShoppingBag, ShieldCheck } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
-import TimelineCard from "@/components/ui/TimelineCard";
+import FeatureCard from "@/components/ui/FeatureCard";
 
-const steps = [
+const retailerSteps = [
   {
     icon: Store,
     title: "Digitize Your Store",
@@ -12,18 +12,18 @@ const steps = [
   },
   {
     icon: PackagePlus,
-    title: "Manage Inventory & Billing",
+    title: "Manage Inventory & Billing", 
     description: "Streamline operations with easy inventory management and integrated billing.",
   },
   {
     icon: ScanLine,
     title: "Publish Real-Time Inventory",
-    description: "Make your products discoverable to nearby customers with live availability.",
+    description: "Make your products discoverable to nearby customers with live availability.", 
   },
   {
     icon: MapPinned,
     title: "Reach Nearby Customers",
-    description: "Connect with local shoppers actively searching for your products.",
+    description: "Connect with local shoppers actively searching for your products.", 
   },
   {
     icon: Rocket,
@@ -37,28 +37,81 @@ const steps = [
   },
 ];
 
+const customerSteps = [
+  {
+    icon: Search,
+    title: "Search Products",
+    description: "Find exactly what you need without visiting multiple shops.",
+  },
+  {
+    icon: MapPinned,
+    title: "Discover Nearby Stores",
+    description: "Instantly see which local stores have the product you're looking for.",
+  },
+  {
+    icon: Eye,
+    title: "View Live Availability",
+    description: "Check stock before leaving home and avoid wasted trips.",
+  },
+  {
+    icon: Scale,
+    title: "Compare Nearby Options",
+    description: "Compare stores by price, distance, and ratings.",
+  },
+  {
+    icon: ShoppingBag,
+    title: "Reserve, Pickup or Delivery",
+    description: "Secure products before visiting or get them delivered to your door.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Buy Locally with Confidence",
+    description: "Support local businesses and enjoy a seamless shopping experience.",
+  },
+];
+
 export default function HowItWorks() {
   return (
     <section id="how-it-works" className="bg-viz-bg-2 py-24 sm:py-28">
       <div className="container-viz">
         <SectionHeading
           eyebrow="Our Platform"
-          title="How Viztore Empowers Local Retail"
-          description="Viztore connects retailers with customers, streamlining operations and boosting local discovery."
+          title="How Viztore Works"
+          description="Empowering retailers with smarter operations while helping customers discover and shop locally—all through one connected platform."
         />
 
-        <div className="mt-16 flex flex-col gap-12 md:flex-row md:gap-4">
-          {steps.map((step, i) => (
-            <TimelineCard
-              key={step.title}
-              icon={step.icon}
-              step={i + 1}
-              title={step.title}
-              description={step.description}
-              isLast={i === steps.length - 1}
-              index={i}
-            />
-          ))}
+        <div className="mt-16 grid grid-cols-1 gap-12 lg:grid-cols-2">
+          {/* For Retailers */}
+          <div className="rounded-3xl border border-viz-border p-8">
+            <h3 className="mb-8 text-2xl font-extrabold text-viz-heading">For Retailers</h3>
+            <div className="flex flex-col gap-8">
+              {retailerSteps.map((step, i) => (
+                <FeatureCard
+                  key={step.title}
+                  icon={step.icon}
+                  title={step.title}
+                  description={step.description}
+                  index={i}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* For Customers */}
+          <div className="rounded-3xl border border-viz-border p-8">
+            <h3 className="mb-8 text-2xl font-extrabold text-viz-heading">For Customers</h3>
+            <div className="flex flex-col gap-8">
+              {customerSteps.map((step, i) => (
+                <FeatureCard
+                  key={step.title}
+                  icon={step.icon}
+                  title={step.title}
+                  description={step.description}
+                  index={i}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

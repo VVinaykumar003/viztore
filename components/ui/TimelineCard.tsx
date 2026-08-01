@@ -37,10 +37,14 @@ export default function TimelineCard({
           {step}
         </span>
       </div>
-      <h3 className="mb-2 text-base font-semibold text-viz-heading">{title}</h3>
-      <p className="max-w-[220px] text-xs leading-relaxed text-viz-paragraph">
-        {description}
-      </p>
+      {/* Tooltip container */}
+      <div className="tooltip tooltip-bottom">
+        <h3 className="mb-2 text-base font-semibold text-viz-heading">{title}</h3>
+        {/* Tooltip content */}
+        <div className="tooltip-content bg-viz-paragraph rounded-md p-2">
+          <p className="text-sm leading-relaxed text-white">{description}</p>
+        </div>
+      </div>
     </motion.div>
   );
 }

@@ -1,7 +1,18 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
-import "./globals.css";
+import { Poppins, Geist , Geist_Mono} from "next/font/google";
+import './global.css';
 
+
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
@@ -47,7 +58,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="viztore" className={poppins.variable}>
+    <html lang="en" data-theme="viztore" className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} h-full antialiased`} >
       <body className="font-sans antialiased">{children}</body>
     </html>
   );

@@ -34,7 +34,7 @@ export default function RetailCategories() {
           description="Whatever you sell, Viztore adapts to your category with the right tools and storefront layout."
         />
 
-        <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
+        <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
           {categories.map((cat, i) => (
             <CategoryCard key={cat.label} icon={cat.icon} label={cat.label} index={i} />
           ))}

@@ -1,9 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Bike, Search, Package, Scale, ShoppingBag, Zap} from "lucide-react";
+import { MapPin, Bike, Search, Package, Scale, ShoppingBag, Zap, Star } from "lucide-react";
 import GlassCard from "@/components/ui/GlassCard";
-import { useState } from "react";
 
 const customerFeatures = [
   {
@@ -44,33 +43,22 @@ const customerFeatures = [
   },
 ];
 
-// Helper component for a feature card
 function FeatureCard({ icon: Icon, title, description }: typeof customerFeatures[0]) {
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
-    <motion.div // Wrap GlassCard with motion.div to apply hover animations
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
+    <motion.div
       initial={{ y: 0 }}
-      whileHover={{ y: -5 }} // Slight lift on hover
+      whileHover={{ y: -5 }}
       transition={{ duration: 0.2 }}
-      className="relative cursor-pointer" // Add relative and cursor-pointer for better UX
+      className="relative cursor-pointer tooltip tooltip-top"
     >
-      <GlassCard className="flex flex-col items-start gap-3 !p-6 h-full"> {/* Ensure GlassCard takes full height */}
+      <div className="tooltip-content bg-viz-paragraph rounded-md">
+        <div className="text-white -rotate-10 text-sm font-black">{description}</div>
+      </div>
+      <GlassCard className="flex flex-col items-start gap-3 !p-6 h-full">
         <div className="flex items-center gap-3">
           <Icon size={24} className="text-viz-accent" />
-          <h3 className="text-lg font-semibold text-white">{title}</h3>
+          <h3 className="text-sm font-thin text-white">{title}</h3>
         </div>
-        <motion.p
-          className={`text-sm text-slate-300 mt-2 ${isHovered ? 'bg-viz-navy/50 rounded-md p-2' : ''}`} // Add background and padding on hover
-          initial={{ height: 0, opacity: 0 }}
-          animate={{ height: isHovered ? "auto" : 0, opacity: isHovered ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
-          style={{ overflow: 'hidden' }} // Hide overflow during height animation
-        >
-          {description}
-        </motion.p>
       </GlassCard>
     </motion.div>
   );
@@ -106,7 +94,6 @@ export default function CustomerSection() {
             need — fast.
           </p>
 
-          {/* New section for features */}
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
             {customerFeatures.map((feature, index) => (
               <FeatureCard key={index} {...feature} />
@@ -114,34 +101,87 @@ export default function CustomerSection() {
           </div>
         </motion.div>
 
+        {/* RIGHT: Phone mockup with fuller composition */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="relative mx-auto h-[420px] w-full max-w-sm lg:h-[500px]"
+          className="relative mx-auto h-[460px] w-full max-w-sm lg:h-[540px]"
         >
+          {/* Decorative radar rings behind the phone */}
+          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-viz-accent/20 lg:h-[340px] lg:w-[340px]" />
+          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[220px] w-[220px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-viz-accent/15 lg:h-[270px] lg:w-[270px]" />
+
+          {/* Phone */}
           <motion.div
             animate={{ y: [0, -16, 0] }}
             transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
             className="absolute left-1/2 top-1/2 h-[400px] w-[200px] -translate-x-1/2 -translate-y-1/2 rounded-[2.5rem] border-4 border-white/10 bg-gradient-to-b from-slate-900 to-viz-navy p-2 shadow-2xl lg:h-[460px] lg:w-[230px]"
           >
-            <div className="h-full w-full rounded-[2rem] bg-gradient-to-b from-viz-accent/15 to-viz-navy p-4">
-              <div className="mb-3 h-2 w-14 rounded-full bg-white/20" />
-              <div className="mb-3 h-20 rounded-2xl bg-white/10" />
-              <div className="grid grid-cols-2 gap-2">
-                <div className="h-16 rounded-xl bg-white/10" />
-                <div className="h-16 rounded-xl bg-white/10" />
-                <div className="h-16 rounded-xl bg-white/10" />
-                <div className="h-16 rounded-xl bg-viz-accent/20" />
+            <div className="flex h-full w-full flex-col rounded-[2rem] bg-gradient-to-b from-viz-accent/15 to-viz-navy p-4">
+              {/* Fake status bar */}
+              <div className="mb-4 flex items-center justify-between">
+                <div className="h-2 w-10 rounded-full bg-white/20" />
+                <div className="h-2 w-2 rounded-full bg-white/20" />
+              </div>
+
+              {/* Search bar */}
+              <div className="mb-3 flex items-center gap-2 rounded-xl bg-white/10 px-3 py-2">
+                <Search size={12} className="text-slate-300" />
+                <div className="h-2 w-16 rounded-full bg-white/20" />
+              </div>
+
+              {/* Product list items */}
+              <div className="flex flex-col gap-2">
+                {[
+                  { icon: Package, label: "Basmati Rice 5kg", meta: "In stock" },
+                  { icon: ShoppingBag, label: "Organic Honey", meta: "2 stores" },
+                  { icon: Star, label: "Top rated near you", meta: "4.8 ★" },
+                ].map(({ icon: Icon, label, meta }, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-2 rounded-xl bg-white/10 p-2"
+                  >
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-viz-accent/20 text-viz-accent">
+                      <Icon size={12} />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <div className="truncate text-[9px] font-semibold text-white">
+                        {label}
+                      </div>
+                      <div className="text-[8px] text-slate-400">{meta}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Map preview strip */}
+              <div className="mt-auto flex h-16 items-center justify-center rounded-xl bg-viz-accent/20">
+                <MapPin size={16} className="text-viz-accent" />
               </div>
             </div>
           </motion.div>
 
+          {/* Floating card: top-right — fills the empty space */}
+          <motion.div
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+            className="absolute -right-2 top-0 lg:top-4"
+          >
+            <GlassCard className="flex items-center gap-2 !p-3">
+              <Star size={16} className="text-viz-accent" />
+              <span className="text-xs font-medium text-white">
+                4.8 rated nearby
+              </span>
+            </GlassCard>
+          </motion.div>
+
+          {/* Floating card: left */}
           <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -left-2 top-6"
+            className="absolute -left-2 top-1/4"
           >
             <GlassCard className="flex items-center gap-2 !p-3">
               <MapPin size={16} className="text-viz-accent" />
@@ -151,6 +191,7 @@ export default function CustomerSection() {
             </GlassCard>
           </motion.div>
 
+          {/* Floating card: bottom-right */}
           <motion.div
             animate={{ y: [0, -12, 0] }}
             transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}

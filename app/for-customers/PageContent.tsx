@@ -30,26 +30,27 @@ import {
   Smartphone,
   Zap,
 } from "lucide-react";
+import PageHero from "@/components/ui/PageHero";
 
 
 const benefits = [
   {
-    icon: MapPin,
+    icon: "MapPin",
     title: "Discover Nearby Stores",
     description: "Find trusted local retailers around you.",
   },
   {
-    icon: Search,
+    icon: "Search",
     title: "Search & Compare",
     description: "Compare products, prices, and availability.",
   },
   {
-    icon: ShoppingBag,
+    icon: "ShoppingBag",
     title: "Reserve or Buy",
     description: "Reserve products or order instantly.",
   },
   {
-    icon: Heart,
+    icon: "Heart",
     title: "Support Local",
     description: "Shop from businesses in your own city.",
   },
@@ -156,45 +157,19 @@ export default function ForCustomersContent() {
     <>
       <Navbar />
       <main>
-        {/* Hero */}
-         <section className="relative overflow-hidden bg-viz-navy pt-20 pb-20 sm:pt-10 sm:pb-10 lg:pt-20 lg:pb-20">
-          <div className="pointer-events-none absolute -left-32 top-10 h-96 w-96 rounded-full bg-viz-primary/30 blur-[120px]" />
-          <div className="pointer-events-none absolute -right-24 top-40 h-80 w-80 rounded-full bg-viz-accent/20 blur-[100px]" />
+ {/* Hero */}
+     
 
-          <div className="container-viz relative text-center">
-            <span className="badge-eyebrow border-white/15 bg-white/5 text-viz-accent">
-              Built for Everyday Shoppers
-            </span>
-            <h1 className="mx-auto mt-6 max-w-4xl text-2xl font-extrabold leading-[1.1] text-white sm:text-5xl lg:text-6xl">
-              Discover Local. <span className="text-viz-accent">Shop</span> Smarter.
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
-              Find products nearby, compare availability, reserve instantly,
-              and choose pickup or local delivery — all from one app.
-            </p>
-            <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button variant="primary">Download App</Button>
-              <Button variant="secondary-dark">Explore Platform</Button>
-            </div>
+      <PageHero
+        badge="Built for Everyday Shoppers"
+        heading="Discover Local."
+        highlight="Shop Smarter."
+        description="Find products nearby, compare availability, reserve instantly, and choose pickup or local delivery — all from one app."
+        primaryLabel="Join Waitlist"
+        secondaryLabel="Request Demo"
+        benefits={benefits || [] }
+      />
 
-            <div className="mx-auto mt-14 grid max-w-4xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {benefits.map(({ icon: Icon, title, description }) => (
-                <div
-                  key={title}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-5 text-left backdrop-blur-sm"
-                >
-                  <div className="flex items-center gap-3 mb-1"> {/* Added a flex container for icon and title */}
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-viz-accent/15 text-viz-accent">
-                      <Icon size={18} />
-                    </span>
-                    <h3 className="text-sm font-semibold text-white">{title}</h3>
-                  </div>
-                  <p className="text-xs leading-relaxed text-slate-300">{description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* Why Shop with Viztore */}
         <section className="py-24 sm:py-28">
@@ -238,7 +213,7 @@ export default function ForCustomersContent() {
           <div className="container-viz">
             <SectionHeading
               eyebrow="How It Works"
-              title="How Viztore Works"
+              title="How Viztore Works."
             />
             <div className="mt-16 flex flex-col gap-12 md:flex-row md:gap-4">
               {steps.map((step, i) => (
@@ -257,14 +232,14 @@ export default function ForCustomersContent() {
         </section>
 
         {/* Local + Global Search */}
-        <section className="relative overflow-hidden bg-viz-navy py-24 sm:py-28">
+        <section className="relative overflow-hidden bg-viz-navy py-24 sm:py-28 mb-10">
           <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-viz-primary/25 blur-[120px]" />
           <div className="pointer-events-none absolute -left-20 top-0 h-72 w-72 rounded-full bg-viz-accent/15 blur-[100px]" />
 
           <div className="container-viz relative">
             <SectionHeading
               light
-              eyebrow="Search Local. Expand Globally."
+              eyebrow=""
               title="Search Local. Expand Globally."
               description="Every search starts with nearby stores. If the product isn't available locally, Viztore automatically expands your search across its retail network — helping you find exactly what you need."
             />
@@ -297,36 +272,7 @@ export default function ForCustomersContent() {
           </div>
         </section>
 
-        {/* Download App CTA */}
-        <section className="px-5 py-20 sm:px-8 lg:px-10">
-          <div className="container-viz relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-viz-primary via-blue-700 to-viz-navy px-8 py-16 text-center sm:px-16 sm:py-20">
-            <div className="pointer-events-none absolute -left-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-20 -right-10 h-72 w-72 rounded-full bg-viz-accent/20 blur-3xl" />
-
-            <div className="relative z-10 mx-auto max-w-2xl">
-              <span className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 text-white">
-                <Smartphone size={26} />
-              </span>
-              <h2 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl">
-                Your Neighborhood. In Your Pocket.
-              </h2>
-              <p className="mt-5 text-base text-blue-100 sm:text-lg">
-                Download the Viztore app and discover everything your local
-                stores have to offer — from fashion and electronics to gifts
-                and more.
-              </p>
-              <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <Button
-                  variant="primary"
-                  className="!bg-viz-accent !text-viz-navy !shadow-amber-400/30 hover:!bg-amber-300"
-                >
-                  Download App
-                </Button>
-                <Button variant="secondary-dark">Explore Platform</Button>
-              </div>
-            </div>
-          </div>
-        </section>
+       
       </main>
       <Footer />
     </>

@@ -1,140 +1,224 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Link from "next/link"; // Import Link for redirection
+import React, { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import {
   Package,
   Boxes,
   Receipt,
   ClipboardList,
-  FileBarChart,
-  BarChart3,
   Truck,
-  Handshake,
-  Network,
-  Users, // Added for Customer Management
-  Globe, // Added for Online Storefront
-  MapPinned, // Added for Local Discovery
-  ArrowRightCircle, // Added for "Explore All" button
+  Users,
+  Globe,
+  MapPinned,
+  BarChart3,
+  Store,
+  ArrowUpRight,
 } from "lucide-react";
-import SectionHeading from "@/components/ui/SectionHeading";
 
-const featureList = [
-  { icon: Package, label: "Product Catalog", type: "feature" },
-  { icon: Boxes, label: "Inventory Tracking", type: "feature" },
-  { icon: Receipt, label: "Billing & Invoicing", type: "feature" },
-  { icon: Users, label: "Customer Management", type: "feature" },
-  { icon: Globe, label: "Online Storefront", type: "feature" },
-  { icon: MapPinned, label: "Local Discovery", type: "feature" },
-  // The remaining features (Order Management, Hyperlocal Delivery, Reports & Analytics) are now covered by "Explore All Features"
-  // This ensures 6 regular features + 1 "Explore All" link, totaling 7 items.
-  { icon: ArrowRightCircle, label: "Explore All Features", type: "link", href: "/features" },
+/**
+ * Viztore — Features section (Tailwind + DaisyUI build)
+ * ---------------------------------------------------------------
+ * Two tracks instead of a generic 3-column grid, because the brief's
+ * own copy already splits this way:
+ *   - "manage products, inventory, billing, orders, and customers"
+ *     -> TRACK 01 · Inside Your Store (6 cards)
+ *   - "...make your store discoverable to nearby shoppers"
+ *     -> TRACK 02 · Beyond Your Door (3 cards)
+ *
+ * Signature moment: a radar "ping" (Tailwind's built-in animate-ping)
+ * sits in the seam between the two tracks — a store pin signaling
+ * outward to three small dots (nearby shoppers). It's a literal,
+ * quiet picture of "local discovery," reusing viz-primary (white)
+ * for the signal and viz-accent for the shopper dots so it ties
+ * both tracks together visually.
+ *
+ * Color usage:
+ *   - viz-primary (white, per your config) = the "Inside Your Store"
+ *     accent, the ping signal, and the primary CTA.
+ *   - viz-accent = the "Beyond Your Door" accent, kept as-is from
+ *     your existing dashboard mockup so nothing is invented.
+ *   - viz-navy / viz-border = unchanged section + card surfaces.
+ *
+ * NOTE on DaisyUI: `btn-primary` / `badge-primary` read DaisyUI's
+ * own theme `primary` value, which is configured separately from
+ * your Tailwind `viz-primary` custom color. If you want those
+ * component classes to also render white, set the DaisyUI theme's
+ * `primary` to white AND give it a dark `primary-content` (e.g.
+ * `#0b1520`) so button text stays legible. This file uses explicit
+ * `bg-viz-primary text-viz-navy` on the CTA instead, so it works
+ * correctly even before that theme change is made.
+ * ---------------------------------------------------------------
+ */
+
+const operationsFeatures = [
+  { icon: Package, title: "Product Management", description: "Organize products, categories, variants, and pricing with ease." },
+  { icon: Boxes, title: "Inventory Management", description: "Track stock in real time and never lose sight of your inventory." },
+  { icon: Receipt, title: "Billing & Invoicing", description: "Generate fast, accurate bills and manage transactions effortlessly." },
+  { icon: ClipboardList, title: "Order Management", description: "Manage walk-in, pickup, delivery, and online orders from one dashboard." },
+  { icon: Users, title: "Customer Management", description: "Maintain customer profiles, purchase history, and loyalty insights." },
+  { icon: BarChart3, title: "Reports & Analytics", description: "Understand sales, inventory performance, and customer trends." },
 ];
 
-const supplierCards = [
-  { icon: Truck, title: "Fast Fulfillment", description: "Connect with local logistics partners for quick delivery." },
-  { icon: Handshake, title: "Verified Suppliers", description: "Source stock from a trusted supplier network." },
-  { icon: Network, title: "Unified Network", description: "One dashboard to manage every supplier relationship." },
+const reachFeatures = [
+  { icon: Globe, title: "Digital Storefront", description: "Showcase your products online and make your store discoverable." },
+  { icon: MapPinned, title: "Local Product Discovery", description: "Help nearby customers find your products when they search." },
+  { icon: Truck, title: "Hyperlocal Delivery", description: "Offer convenient local delivery without changing how you run your store." },
 ];
+
+function useReveal() {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return [ref, visible];
+}
+
+function TrackLabel({ eyebrow, title, accent }) {
+  const dot = accent === "primary" ? "bg-viz-primary" : "bg-viz-accent";
+  return (
+    <div className="mt-14 mb-6 flex items-center gap-3">
+      <span className={`h-2 w-2 flex-none rounded-full ${dot}`} />
+      <span className="font-mono text-[11px] uppercase tracking-widest text-white/40">
+        {eyebrow}
+      </span>
+      <span className="font-semibold text-white">{title}</span>
+      <span className="h-px flex-1 bg-viz-border" />
+    </div>
+  );
+}
+
+function FeatureCard({ icon: Icon, title, description, accent, delay, visible }) {
+  const iconBg =
+    accent === "primary"
+      ? "bg-viz-primary/10 text-viz-primary"
+      : "bg-viz-accent/15 text-viz-accent";
+  const hoverBorder =
+    accent === "primary" ? "hover:border-viz-primary/40" : "hover:border-viz-accent/40";
+
+  return (
+    <div
+      className={`card border border-viz-border bg-viz-navy/60 transition-all duration-700 ${hoverBorder} hover:-translate-y-1 ${
+        visible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+      }`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      <div className="card-body gap-2 p-5">
+        <div className={`flex h-9 w-9 items-center justify-center rounded-lg ${iconBg}`}>
+          <Icon size={18} strokeWidth={1.75} />
+        </div>
+        <h3 className="card-title text-base text-white">{title}</h3>
+        <p className="text-sm leading-relaxed text-white/55">{description}</p>
+      </div>
+    </div>
+  );
+}
+
+function DiscoverySeam() {
+  return (
+    <div className="my-10 flex items-center gap-4" aria-hidden="true">
+      <span className="h-px flex-1 bg-gradient-to-r from-transparent to-viz-border" />
+
+      <div className="relative flex h-10 w-10 flex-none items-center justify-center">
+        <span className="absolute inset-0 animate-ping rounded-full bg-viz-primary/40 [animation-duration:3s]" />
+        <span className="absolute inset-0 animate-ping rounded-full bg-viz-primary/25 [animation-delay:1s] [animation-duration:3s]" />
+        <span className="absolute inset-0 animate-ping rounded-full bg-viz-primary/15 [animation-delay:2s] [animation-duration:3s]" />
+
+        <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border border-viz-primary/60 bg-viz-navy text-viz-primary">
+          <Store size={15} strokeWidth={1.75} />
+        </span>
+
+        <span className="absolute -top-3 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-viz-accent" />
+        <span className="absolute -bottom-2 -left-5 h-1 w-1 rounded-full bg-viz-accent" />
+        <span className="absolute -bottom-2 -right-5 h-1 w-1 rounded-full bg-viz-accent" />
+      </div>
+
+      <span className="h-px flex-1 bg-gradient-to-l from-transparent to-viz-border" />
+    </div>
+  );
+}
 
 export default function Features() {
+  const [headRef, headVisible] = useReveal();
+  const [opsRef, opsVisible] = useReveal();
+  const [reachRef, reachVisible] = useReveal();
+
   return (
-    <section id="features" className="py-24 sm:py-28">
+    <section id="features" className="bg-viz-navy py-24 sm:py-28">
       <div className="container-viz">
-        <SectionHeading
-          eyebrow="For Retailers"
-          title="Everything your store needs, in one place"
-          description="Viztore brings the essential tools of running a store into a single, simple dashboard."
-        />
+        <div
+          ref={headRef}
+          className={`max-w-xl transition-all duration-700 ${
+            headVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+          }`}
+        >
+          {/* <span className="badge badge-outline gap-2 border-viz-primary/40 font-mono text-xs uppercase tracking-widest text-viz-primary"> */}
+          <span className="badge badge-outline gap-2 border-white/40 font-mono text-xs uppercase tracking-widest text-white">
+            For Retailers
+          </span>
+          <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Everything You Need to Run Your Store
+          </h2>
+          <p className="mt-3 max-w-md text-base leading-relaxed text-white/60">
+            Manage products, inventory, billing, orders, and customers — all
+            while making your store discoverable to nearby shoppers.
+          </p>
+        </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-[0.9fr_1.2fr_0.9fr]">
-          {/* Left - feature list */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col gap-3"
-          >
-            {featureList.map((feature) => {
-              const Icon = feature.icon;
-              if (feature.type === "link") {
-                return (
-                  <Link
-                    key={feature.label}
-                    href={feature.href || "#"} // Ensure href is defined for Link
-                    className="flex items-center justify-between gap-3 rounded-2xl border border-viz-primary bg-viz-primary px-5 py-4 shadow-sm transition-colors hover:bg-viz-primary/90"
-                  >
-                    <span className="text-sm font-medium text-white">
-                      {feature.label}
-                    </span>
-                    <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/20 text-white">
-                      <Icon size={18} />
-                    </span>
-                  </Link>
-                );
-              }
-              return (
-                <div key={feature.label} className="flex items-center gap-3 rounded-2xl border border-viz-border bg-white px-5 py-4 shadow-sm">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-viz-primary/10 text-viz-primary">
-                    <Icon size={18} />
-                  </span>
-                  <span className="text-sm font-medium text-viz-heading">{feature.label}</span>
-                </div>
-              );
-}) }
-          </motion.div>
-
-          {/* Center - dashboard mockup */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="rounded-3xl border border-viz-border bg-viz-navy p-6 shadow-2xl"
-          >
-            <div className="mb-5 flex items-center justify-between">
-              <div className="flex gap-1.5">
-                <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
-                <span className="h-2.5 w-2.5 rounded-full bg-viz-accent" />
-                <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
-              </div>
-              <span className="text-xs text-slate-400">Viztore Dashboard</span>
-            </div>
-            <div className="grid grid-cols-3 gap-3">
-              <div className="col-span-3 h-28 rounded-2xl bg-gradient-to-br from-viz-primary/30 to-viz-primary/5" />
-              <div className="col-span-1 h-20 rounded-xl bg-white/5" />
-              <div className="col-span-1 h-20 rounded-xl bg-white/5" />
-              <div className="col-span-1 h-20 rounded-xl bg-viz-accent/20" />
-              <div className="col-span-3 h-16 rounded-xl bg-white/5" />
-            </div>
-          </motion.div>
-
-          {/* Right - supplier network */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-col gap-4"
-          >
-            {supplierCards.map(({ icon: Icon, title, description }) => (
-              <div
-                key={title}
-                className="rounded-2xl border border-viz-border bg-white p-5 shadow-sm"
-              >
-                <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-xl bg-viz-accent/15 text-viz-accent">
-                  <Icon size={18} />
-                </span>
-                <h4 className="mb-1 text-sm font-semibold text-viz-heading">
-                  {title}
-                </h4>
-                <p className="text-xs leading-relaxed text-viz-paragraph">
-                  {description}
-                </p>
-              </div>
+        <div ref={opsRef}>
+          <TrackLabel eyebrow="Track 01" title="Inside Your Store" accent="primary" />
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {operationsFeatures.map((f, i) => (
+              <FeatureCard
+                key={f.title}
+                {...f}
+                accent="primary"
+                delay={i * 60}
+                visible={opsVisible}
+              />
             ))}
-          </motion.div>
+          </div>
+        </div>
+
+        <DiscoverySeam />
+
+        <div ref={reachRef}>
+          <TrackLabel eyebrow="Track 02" title="Beyond Your Door" accent="accent" />
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {reachFeatures.map((f, i) => (
+              <FeatureCard
+                key={f.title}
+                {...f}
+                accent="accent"
+                delay={i * 60}
+                visible={reachVisible}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-14 flex justify-center">
+          <Link href="/features">
+            <button className="btn gap-2 rounded-full bg-viz-primary px-6 text-viz-navy hover:bg-viz-primary/90 border-none">
+              Explore all features
+              <ArrowUpRight size={16} />
+            </button>
+          </Link>
         </div>
       </div>
     </section>

@@ -14,26 +14,30 @@ const navLinks = [
   { label: "About Us", href: "/about-us" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ heroHeight }) {
   const [scrolled, setScrolled] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [pastHero, setPastHero] = useState(false); // New state for tracking if hero is passed
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20);
+      setPastHero(window.scrollY > heroHeight); // Update based on heroHeight
+    };
     onScroll();
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [heroHeight]); // Re-run effect if heroHeight changes
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300  ${
         scrolled
           ? "border-b border-viz-border bg-white/90 shadow-sm backdrop-blur-md"
           : "bg-transparent"
-      }`}
+      } ${pastHero ? "bg-white/90 shadow-sm backdrop-blur-md" : ""}`}
     >
-      <nav className="container-viz flex h-20 items-center justify-between">
+      <nav className="container-viz flex h-18 items-center justify-between">
         <Link href="/" className="flex items-center">
           <Image
             src={scrolled ? "/images/darkLogo.png" : "/images/lightLogo.png"}
@@ -41,12 +45,12 @@ export default function Navbar() {
             width={140}
             height={60}
             priority
-            className="h-19 w-auto"
+            className="h-19 w-auto pl-4"
           />
         </Link>
 
         <div
-          className={`hidden items-center gap-8 lg:flex ${
+          className={`hidden items-center gap-8 lg:flex pr-5 ${
             scrolled ? "text-viz-heading" : "text-white/90"
           }`}
         >
@@ -61,7 +65,7 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        {/* <div className="hidden items-center gap-3 lg:flex">
           <button
             className={`text-sm font-semibold transition-colors ${
               scrolled ? "text-viz-heading hover:text-viz-primary" : "text-white hover:text-viz-accent"
@@ -72,7 +76,7 @@ export default function Navbar() {
           <Button variant="primary" className="!px-5 !py-2.5">
             Join Waitlist
           </Button>
-        </div>
+        </div> */}
 
         <button
           className={`lg:hidden ${scrolled ? "text-viz-heading" : "text-white"}`}

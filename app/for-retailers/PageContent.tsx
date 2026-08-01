@@ -2,17 +2,12 @@
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import CTASection from "@/components/home/CTASection";
 import SectionHeading from "@/components/ui/SectionHeading";
 import FeatureCard from "@/components/ui/FeatureCard";
 import TimelineCard from "@/components/ui/TimelineCard";
 import CategoryCard from "@/components/ui/CategoryCard";
 import Button from "@/components/ui/Button";
 import {
-  Globe2,
-  Clock,
-  TrendingUp,
-  BarChart3,
   Store,
   PackagePlus,
   Boxes,
@@ -42,28 +37,30 @@ import {
   LineChart,
   Handshake,
 } from "lucide-react";
+import PageHero from "@/components/ui/PageHero";
+// import PageHeroIconName from "@/components/ui/PageHero"; // Removed incorrect type import
 
 
 const benefits = [
   {
-    icon: Globe2,
+    icon: "Globe2", // Changed to string literal
     title: "Increase Visibility",
     description: "Get discovered by nearby customers searching for your products.",
     
   },
   {
-    icon: Clock,
+    icon: "Clock", // Changed to string literal
     title: "Save Time",
     description: "Simplify inventory, billing, and daily store operations.",
   },
   {
-    icon: TrendingUp,
+    icon: "TrendingUp", // Changed to string literal
     title: "Boost Sales",
     description: "Reach more local customers and increase repeat purchases.",
    
   },
   {
-    icon: BarChart3,
+    icon: "BarChart3", // Changed to string literal
     title: "Business Insights",
     description: "Track performance with real-time reports and analytics.",
     
@@ -183,61 +180,29 @@ export default function ForRetailersContent() {
   return (
     <>
       <Navbar />
-      <main>
+      <main >
         {/* Hero */}
-        <section className="relative overflow-hidden bg-viz-navy pt-20 pb-20 sm:pt-10 sm:pb-10 lg:pt-20 lg:pb-20">
-          <div className="pointer-events-none absolute -left-32 top-10 h-96 w-96 rounded-full bg-viz-primary/30 blur-[120px]" />
-          <div className="pointer-events-none absolute -right-24 top-40 h-80 w-80 rounded-full bg-viz-accent/20 blur-[100px]" />
+          <PageHero
+          badge="For Retailers"
+          heading="Digitize. Manage."
+          highlight="Grow Your Store."
+          description="Everything your store needs — from daily operations to local customer discovery."
+          benefits={benefits || [] }
+          primaryLabel="Join Waitlist"
+          secondaryLabel="Request Demo"
+        />
 
-          <div className="container-viz relative text-center">
-            <span className="badge-eyebrow border-white/15 bg-white/5 text-viz-accent">
-              Built for Modern Retailers
-            </span>
-           
-            <h1 className="mx-auto mt-6 max-w-3xl text-4xl font-extrabold leading-[1.1] text-white sm:text-5xl lg:text-6xl">
-              Digitize. Manage. <span className="text-viz-accent">Grow</span> Your Store.
-            </h1>
-          
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
-              {/* Manage products, inventory, billing, customers, and orders from
-              one platform while making your store discoverable to nearby
-              shoppers.
-            </p> */}
-              one platform while making your store discoverable to nearby shoppers.
-            </p> {/* Already correct */}
-            <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button variant="primary">Join Waitlist</Button>
-              <Button variant="secondary-dark">Request Demo</Button>
-            </div>
-
-            <div className="mx-auto mt-14 grid max-w-4xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 pb-10">
-              {benefits.map(({ icon: Icon, title, description }) => (
-                <div
-                  key={title}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-5 text-left backdrop-blur-sm"
-                >
-                  <div className="flex items-center gap-3 mb-1">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-viz-accent/15 text-viz-accent">
-                      <Icon size={18} />
-                    </span>
-                    <h3 className="text-sm font-semibold text-white">{title}</h3>
-                  </div>
-                  <p className="text-xs leading-relaxed text-slate-300">{description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+      
 
         {/* How Viztore Works for Retailers */}
-        <section className="bg-viz-bg-2 py-24 sm:py-28 lg:py-[15px]">
+        <section className="bg-viz-bg-2 py-24 sm:py-28 lg:py-[15px] pb-10">
           <div className="container-viz">
             <SectionHeading
               eyebrow="How Viztore Works"
-              title="How Viztore Works for Retailers"
+              title="How Viztore Works for Retailers?"
               description="Everything your store needs — from daily operations to local customer discovery."
             />
-            <div className="mt-16 flex flex-col gap-12 md:flex-row md:gap-4">
+            <div className="mt-16 flex flex-col gap-12 md:flex-row md:gap-4 ">
               {steps.map((step, i) => (
                 <TimelineCard
                   key={step.title}
@@ -254,13 +219,13 @@ export default function ForRetailersContent() {
         </section>
 
         {/* Powerful Features */}
-        <section className="py-24 sm:py-28 lg:py-[15px]">
-          <div className="container-viz grid grid-cols-1 items-center gap-14 lg:grid-cols-2">
+        {/* <section className="py-24 sm:py-28 lg:py-[15px]">
+          <div className="container-viz grid grid-cols-1 items-center gap-14 lg:grid-cols-2 p-10">
             <div>
               <SectionHeading
                 align="left"
                 eyebrow="Powerful Features"
-                title="Everything You Need to Run Your Store"
+                title="Everything You Need to Run Your Store."
                 description="Manage your retail operations, streamline daily workflows, and grow your business — all from one connected platform."
               />
               <div className="mt-8 flex flex-col gap-3">
@@ -301,14 +266,123 @@ export default function ForRetailersContent() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
+
+
+        {/* Powerful Features */}
+<section className="py-24 sm:py-28 lg:py-24">
+  <div className="container-viz grid grid-cols-1 items-center gap-14 lg:grid-cols-2">
+    {/* LEFT: Copy + Feature Grid */}
+    <div>
+      <SectionHeading
+        align="left"
+        eyebrow="Powerful Features"
+        title="Everything You Need to Run Your Store."
+        description="Manage your retail operations, streamline daily workflows, and grow your business — all from one connected platform."
+      />
+
+      <div className="mt-8 grid grid-cols-2 gap-3">
+        {featureList.map(({ icon: Icon, label }) => (
+          <div
+            key={label}
+            className="group flex flex-col gap-3 rounded-2xl border border-viz-border bg-white p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+          >
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-viz-primary/10 text-viz-primary transition-colors duration-300 group-hover:bg-viz-primary group-hover:text-white">
+              <Icon size={18} />
+            </span>
+            <span className="text-sm font-medium leading-snug text-viz-heading">
+              {label}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-8">
+        <Button variant="primary">Explore All Features</Button>
+      </div>
+    </div>
+
+    {/* RIGHT: Browser-window mockup */}
+    <div className="relative">
+      {/* Floating accent card */}
+      <div className="absolute -top-6 -right-4 z-10 hidden sm:flex items-center gap-3 rounded-2xl border border-viz-border bg-white px-4 py-3 shadow-xl">
+        <span className="flex h-9 w-9 items-center justify-center rounded-full bg-green-100 text-green-600 text-sm font-bold">
+          ▲
+        </span>
+        <div className="leading-tight">
+          <p className="text-xs text-viz-paragraph">Sales Today</p>
+          <p className="text-sm font-bold text-viz-heading">+24.6%</p>
+        </div>
+      </div>
+
+      <div className="overflow-hidden rounded-3xl border border-viz-border bg-white shadow-2xl">
+        {/* Browser chrome */}
+        <div className="flex items-center gap-3 border-b border-viz-border bg-viz-bg-2 px-4 py-3">
+          <div className="flex gap-1.5">
+            <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
+            <span className="h-2.5 w-2.5 rounded-full bg-viz-accent" />
+            <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
+          </div>
+          <div className="flex-1 rounded-lg bg-white px-3 py-1 text-center text-[11px] text-viz-paragraph shadow-inner">
+            viztore.app/dashboard
+          </div>
+        </div>
+
+        {/* Storefront content */}
+        <div className="p-5">
+          {/* Nav row */}
+          <div className="mb-4 flex items-center justify-between">
+            <div className="h-3 w-20 rounded-full bg-viz-primary/20" />
+            <div className="flex gap-2">
+              <div className="h-6 w-6 rounded-full bg-viz-bg-2" />
+              <div className="h-6 w-6 rounded-full bg-viz-bg-2" />
+            </div>
+          </div>
+
+          {/* Hero banner */}
+          <div className="mb-4 h-24 rounded-2xl bg-gradient-to-br from-viz-primary/20 to-viz-accent/10" />
+
+          {/* Product grid */}
+          <div className="grid grid-cols-3 gap-3">
+            {[0, 1, 2].map((i) => (
+              <div
+                key={i}
+                className="rounded-xl border border-viz-border bg-viz-bg-2 p-2"
+              >
+                <div className="mb-2 h-12 rounded-lg bg-white" />
+                <div className="h-2 w-3/4 rounded-full bg-viz-border" />
+                <div className="mt-1 h-2 w-1/2 rounded-full bg-viz-border" />
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom stat strip */}
+          <div className="mt-4 grid grid-cols-2 gap-3">
+            <div className="rounded-xl bg-viz-primary/5 p-3">
+              <p className="text-[10px] uppercase tracking-wide text-viz-paragraph">
+                Orders
+              </p>
+              <p className="mt-1 text-sm font-bold text-viz-heading">128</p>
+            </div>
+            <div className="rounded-xl bg-viz-accent/10 p-3">
+              <p className="text-[10px] uppercase tracking-wide text-viz-paragraph">
+                Revenue
+              </p>
+              <p className="mt-1 text-sm font-bold text-viz-heading">₹42k</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
         {/* Supplier Network */}
         <section className="bg-viz-bg-2 py-24 sm:py-28 lg:py-[15px]">
-          <div className="container-viz">
+          <div className="container-viz p-10">
             <SectionHeading
               eyebrow="Supplier Network"
-              title="Source Inventory Smarter"
+              title="Source Inventory Smarter."
               description="Everything you need to source inventory smarter. Discover suppliers, compare offers, manage purchases, and keep your shelves stocked — all within Viztore."
             />
             <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -327,10 +401,10 @@ export default function ForRetailersContent() {
 
         {/* Built for Every Type of Retail Business */}
         <section className="py-24 sm:py-28 lg:py-[15px]">
-          <div className="container-viz">
+          <div className="container-viz p-10">
             <SectionHeading
               eyebrow="Every Category"
-              title="Built for Every Type of Retail Business"
+              title="Built for Every Type of Retail Business."
               description="Whatever you sell, Viztore adapts to your category with the right tools — and many more."
             /> 
             <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
@@ -343,10 +417,10 @@ export default function ForRetailersContent() {
 
         {/* Why Retailers Choose Viztore */}
         <section className="bg-viz-bg-2 py-24 sm:py-28 lg:py-[15px]">
-          <div className="container-viz">
+          <div className="container-viz p-10">
             <SectionHeading
               eyebrow="Why Retailers Choose Viztore"
-              title="Built to Help Local Retailers Grow"
+              title="Built to Help Local Retailers Grow."
             />
             <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {whyChoose.map((reason, i) => (
@@ -362,7 +436,7 @@ export default function ForRetailersContent() {
           </div>
         </section>
 
-        <CTASection />
+      
       </main>
       <Footer />
     </>

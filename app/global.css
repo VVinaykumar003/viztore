@@ -41,12 +41,13 @@ body {
   }
 
   .section-heading {
-    @apply text-3xl font-bold text-viz-heading sm:text-4xl lg:text-5xl;
+    @apply text-3xl font-bold text-viz-heading sm:text-4xl lg:text-4xl; 
   }
 
   .section-eyebrow {
     @apply mb-4 inline-block text-xs font-bold uppercase tracking-[0.2em] text-viz-primary;
   }
+
 }
 
 ::selection {
