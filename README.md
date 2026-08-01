@@ -1,6 +1,6 @@
-# Viztore — Landing Page
+# Viztore — Multi-Page Website
 
-A premium SaaS landing page for **Viztore**, built with Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS, DaisyUI, Framer Motion and Lucide React.
+A premium SaaS website for **Viztore**, built with Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS, DaisyUI, Framer Motion and Lucide React.
 
 ## Getting Started
 
@@ -19,101 +19,73 @@ npm start
 ```
 
 > Note: `npm run build` requires internet access on first build so Next.js
-> can fetch the Poppins font from Google Fonts (via `next/font/google`). This
-> is normal and only needs to happen once per machine/CI cache.
+> can fetch the Poppins font from Google Fonts (via `next/font/google`).
 
 ## Pages
 
-The site is now a multi-page Next.js App Router site. The navbar and footer
-link to dedicated routes instead of same-page anchors:
+| Route            | Description                                   |
+|-------------------|------------------------------------------------|
+| `/`                | Home — problem, how it works, features, categories |
+| `/for-retailers`   | Retailer-focused product page                  |
+| `/for-customers`   | Customer-focused product page                  |
+| `/platform`        | Full platform overview                          |
+| `/about-us`        | Company story, values, roadmap                  |
 
-```
-/               — Home
-/for-retailers  — For Retailers
-/for-customers  — For Customers
-/platform       — Platform
-/about-us       — About Us
-```
+Navbar and footer links route between these pages (not same-page anchors).
 
-Each route follows a `page.tsx` (Server Component, holds SEO `metadata`) +
-`PageContent.tsx` (Client Component, holds the actual sections/animations)
-pattern, so icon components can be used freely without server/client
-prop-serialization issues.
+## Images
+
+Place these files in `public/images/` — placeholders are included so the
+site runs out of the box, but swap in your real assets:
+
+- `lightLogo.png` — used on dark/transparent backgrounds (navbar when not
+  scrolled, footer)
+- `darkLogo.png` — used on white backgrounds (navbar once scrolled)
+- `bannerImage.png` — Home hero banner visual
+- `mobileImage.png` — Home hero + For Customers app-download phone mockup
 
 ## Project Structure
 
 ```
 app/
-  layout.tsx           — root layout, Poppins font, SEO metadata
-  page.tsx             — assembles all homepage sections
-  globals.css          — Tailwind base + design-system utility classes
-  for-retailers/
-    page.tsx           — metadata + renders PageContent
-    PageContent.tsx    — hero, benefits, how-it-works, features, supplier
-                          network, retail types, why-retailers-choose-us
-  for-customers/
-    page.tsx / PageContent.tsx — hero, why-shop, categories, how-it-works,
-                          local+global search, download-app CTA
-  platform/
-    page.tsx / PageContent.tsx — hero, ecosystem, 4 pillars, highlights,
-                          search flow, business types, integrations, CTA
-  about-us/
-    page.tsx / PageContent.tsx — hero, story, belief, values, why-we-started,
-                          what-we're-building, roadmap, why-it-matters, CTA
+  page.tsx                 — Home
+  for-retailers/page.tsx   — For Retailers
+  for-customers/page.tsx   — For Customers
+  platform/page.tsx        — Platform
+  about-us/page.tsx        — About Us
+  layout.tsx               — root layout, Poppins font, SEO metadata
+  globals.css               — Tailwind base + design-system utilities
 
 components/
   layout/
-    Navbar.tsx        — sticky navbar; swaps lightLogo.png / darkLogo.png on
-                         scroll; links point to dedicated pages
-    Footer.tsx         — dark navy footer; links point to dedicated pages
+    Navbar.tsx        — sticky navbar, logo swap on scroll, page routing
+    Footer.tsx          — dark navy footer, links to dedicated pages
 
-  ui/
-    Button.tsx          — primary / secondary / secondary-dark button
-    SectionHeading.tsx  — eyebrow + heading + description
-    FeatureCard.tsx      — icon + title + description card with hover glow
-    TimelineCard.tsx     — numbered step card for How It Works
-    CategoryCard.tsx     — retail category card with hover lift
-    GlassCard.tsx        — floating glassmorphism card (used in hero mockups)
+  ui/                   — shared primitives used across every page
+    Button.tsx, SectionHeading.tsx, FeatureCard.tsx, TimelineCard.tsx,
+    CategoryCard.tsx, GlassCard.tsx, CTASection.tsx, PageHero.tsx,
+    FlowSteps.tsx, ColumnList.tsx, PhaseTimeline.tsx
 
-  home/
-    Hero.tsx              — two-column hero; bannerImage.png (desktop) /
-                             mobileImage.png (mobile) from public/images
-    TrustedBrands.tsx     — infinite scrolling logo/brand marquee
-    ProblemSection.tsx    — 3-column problem / insight / pain-points layout
-    HowItWorks.tsx         — 5-step animated timeline
-    Features.tsx            — feature list + dashboard mockup + supplier cards
-    RetailCategories.tsx    — responsive category grid (10 categories)
-    CustomerSection.tsx     — dark customer-app section with store badges
-    WhyChooseUs.tsx          — 6 feature cards
-    CTASection.tsx            — final gradient call-to-action
+  home/         — Home page sections
+  retailers/    — For Retailers page sections
+  customers/    — For Customers page sections
+  platform/     — Platform page sections
+  about/        — About Us page sections
 
 public/
-  images/
-    lightLogo.png     — light/white-styled logo, shown on transparent navbar
-    darkLogo.png       — dark navy logo, shown once navbar is scrolled
-    bannerImage.png     — desktop hero illustration (Home hero, lg+ screens)
-    mobileImage.png      — mobile hero illustration (Home hero, small screens)
-  icons/    — add custom SVG icons here
+  images/   — logos, hero, and mockup images
+  icons/    — custom SVG icons if needed
 ```
 
-> The logo and hero images shipped in `public/images` are placeholders —
-> swap in your real brand assets using the same filenames and the app will
-> pick them up automatically.
+## Content
 
-## Design System
-
-Colors, typography and the `viztore` DaisyUI theme are defined in
-`tailwind.config.ts` and `app/globals.css`, matching the Viztore brand spec
-(Primary Blue `#2563EB`, Dark Navy `#0B1F4D`, Accent Yellow `#FBBF24`, Poppins
-typeface).
+All page copy is sourced from the provided content docs (Home, For
+Retailers, For Customers, Platform, About Us) and mapped 1:1 into the
+matching sections above.
 
 ## Notes
 
-- All sections are built as independent, reusable components — swap content,
-  copy or imagery without touching layout logic.
+- All sections are independent, reusable components.
 - Motion is powered by Framer Motion with scroll-triggered reveals, hover
-  lifts, glow effects and floating animations, kept subtle per the brief.
+  lifts, and floating animations.
 - Fully responsive from 320px up to large desktop/2K screens.
-- Replace the placeholder gradient blocks (hero phone screen, dashboard
-  mockup, category icons) with real product screenshots in `public/images`
-  when available.

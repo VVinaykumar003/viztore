@@ -3,19 +3,6 @@
   @tailwind utilities;
   @plugin "daisyui";
 
-@theme {
-  --color-viz-primary: #2563EB;
-  --color-viz-secondary: #3B82F6;
-  --color-viz-navy: #0B1F4D;
-  --color-viz-accent: #FBBF24;
-  --color-viz-bg: #FFFFFF;
-  --color-viz-bg-2: #F8FAFC;
-  --color-viz-border: #E2E8F0;
-  --color-viz-heading: #0F172A;
-  --color-viz-paragraph: #475569;
-  --font-sans: var(--font-poppins), sans-serif;
-}
-
 /* your existing @layer components block stays as-is */
 
   html {

@@ -47,7 +47,7 @@ export default function Navbar({ heroHeight = 0 }: NavbarProps) {
             src={scrolled ? "/images/darkLogo.png" : "/images/lightLogo.png"}
             alt="Viztore"
             width={140}
-            height={60}
+            height={160}
             priority
             className="h-19 w-auto pl-4"
           />
