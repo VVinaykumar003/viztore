@@ -4,6 +4,11 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Eye, Boxes, TrendingUp, BarChart3 } from "lucide-react";
 import Image from "next/image";
 
+
+interface HeroProps {
+  onHeroHeightChange?: (height: number) => void;
+}
+
 const features = [
   { icon: Eye, label: "Visibility" },
   { icon: Boxes, label: "Inventory" },
@@ -11,7 +16,9 @@ const features = [
   { icon: BarChart3, label: "Analytics" },
 ];
 
-export default function Hero({ onHeroHeightChange }) {
+
+export default function Hero({ onHeroHeightChange }: HeroProps) {
+  
   return (
 <section
   id="home"

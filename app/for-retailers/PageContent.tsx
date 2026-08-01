@@ -1,5 +1,5 @@
 "use client";
-
+import { useState, useEffect, useRef } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -37,11 +37,11 @@ import {
   LineChart,
   Handshake,
 } from "lucide-react";
-import PageHero from "@/components/ui/PageHero";
+import PageHero, {type Benefit} from "@/components/ui/PageHero";
 // import PageHeroIconName from "@/components/ui/PageHero"; // Removed incorrect type import
 
 
-const benefits = [
+const benefits : Benefit[] =  [
   {
     icon: "Globe2", // Changed to string literal
     title: "Increase Visibility",
@@ -177,9 +177,18 @@ const whyChoose = [
 
 // The whyChoose array is already correct based on the provided input.
 export default function ForRetailersContent() {
+    // In the page that renders <Hero> and <Navbar> together
+  const [heroHeight, setHeroHeight] = useState(0);
+  const heroRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    if (heroRef.current) {
+      setHeroHeight(heroRef.current.offsetHeight);
+    }
+  }, []);
   return (
     <>
-      <Navbar />
+      <Navbar heroHeight={heroHeight} />
       <main >
         {/* Hero */}
           <PageHero

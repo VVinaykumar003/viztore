@@ -24,7 +24,6 @@ import {
   Factory,
   Wallet,
   Truck,
-  ClipboardCheck,
   Shirt,
   Footprints,
   Cpu,
@@ -41,6 +40,8 @@ import {
   Handshake,
   type LucideIcon,
   Globe2,
+  ClipboardCheck,
+  UserCheck,
 } from "lucide-react";
 import Button from "@/components/ui/Button";
 
@@ -60,8 +61,7 @@ const iconMap = {
   Boxes,
   Receipt,
   Rocket,
-  Package,
-  
+  Package, 
   ClipboardList,
   FileBarChart,
   Users,
@@ -83,6 +83,7 @@ const iconMap = {
   MapPinned,
   LineChart,
   Handshake,
+  UserCheck,
 } satisfies Record<string, LucideIcon>;
 
 export type PageHeroIconName = keyof typeof iconMap;
@@ -92,6 +93,8 @@ interface Benefit {
   title: string;
   description: string;
 }
+
+export type { Benefit };
 
 interface PageHeroProps {
   badge: string;

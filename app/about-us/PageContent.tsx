@@ -1,4 +1,5 @@
 "use client";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -23,22 +24,22 @@ import {
   UserCheck,
   MapPin,
 } from "lucide-react";
-import PageHero from "@/components/ui/PageHero";
+import PageHero , { type  Benefit }  from "@/components/ui/PageHero";
 
 
-const heroHighlights = [
+const benefits : Benefit[] =  [
   {
-    icon: "Store",
+     icon: "Store" as const,
     title: "Built for Local Businesses",
     description: "Designed specifically for independent retailers and growing brands.",
   },
   {
-    icon: "Globe2",
+    icon: "Globe" as const,
     title: "Made for India",
     description: "Built to solve the real challenges of India's retail ecosystem.",
   },
   {
-    icon: "Rocket",
+    icon:  "Rocket" as const,
     title: "Future Ready",
     description: "Creating the technology powering the next generation of local commerce.",
   },
@@ -152,9 +153,19 @@ const whyMatters = [
 ];
 
 export default function AboutUsContent() {
+
+  // In the page that renders <Hero> and <Navbar> together
+const [heroHeight, setHeroHeight] = useState(0);
+const heroRef = useRef<HTMLDivElement>(null);
+
+useEffect(() => {
+  if (heroRef.current) {
+    setHeroHeight(heroRef.current.offsetHeight);
+  }
+}, []);
   return (
     <>
-      <Navbar />
+     <Navbar heroHeight={heroHeight} />
       <main>
         {/* Hero Section */}
        
@@ -169,7 +180,7 @@ export default function AboutUsContent() {
               for customers."
           primaryLabel="Join Waitlist"
           secondaryLabel="Request Demo"
-          benefits={heroHighlights || []}
+          benefits={benefits  || []}
         />
 
 

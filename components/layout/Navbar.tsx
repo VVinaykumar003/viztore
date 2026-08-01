@@ -13,8 +13,12 @@ const navLinks = [
   { label: "Platform", href: "/platform" },
   { label: "About Us", href: "/about-us" },
 ];
+interface NavbarProps {
+  heroHeight?: number;
+}
 
-export default function Navbar({ heroHeight }) {
+
+export default function Navbar({ heroHeight = 0 }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [pastHero, setPastHero] = useState(false); // New state for tracking if hero is passed

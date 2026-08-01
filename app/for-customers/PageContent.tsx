@@ -1,5 +1,5 @@
 "use client";
-
+import { useState, useEffect, useRef } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -30,10 +30,10 @@ import {
   Smartphone,
   Zap,
 } from "lucide-react";
-import PageHero from "@/components/ui/PageHero";
+import PageHero ,{type Benefit} from "@/components/ui/PageHero";
 
 
-const benefits = [
+const benefits : Benefit[] =  [
   {
     icon: "MapPin",
     title: "Discover Nearby Stores",
@@ -153,9 +153,18 @@ const searchFeatures = [
 ];
 
 export default function ForCustomersContent() {
+    // In the page that renders <Hero> and <Navbar> together
+  const [heroHeight, setHeroHeight] = useState(0);
+  const heroRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    if (heroRef.current) {
+      setHeroHeight(heroRef.current.offsetHeight);
+    }
+  }, []);
   return (
     <>
-      <Navbar />
+      <Navbar heroHeight={heroHeight} />
       <main>
  {/* Hero */}
      

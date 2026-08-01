@@ -14,6 +14,7 @@ import {
   BarChart3,
   Store,
   ArrowUpRight,
+   type LucideIcon,
 } from "lucide-react";
 
 /**
@@ -50,6 +51,24 @@ import {
  * correctly even before that theme change is made.
  * ---------------------------------------------------------------
  */
+
+interface ItemProps {
+  eyebrow: React.ReactNode;
+  title: string;
+  accent: string;
+  // Add other properties as needed
+}
+
+interface Feature{
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  accent?: string;
+  delay?: number;
+  visible?: boolean;
+}
+
+
 
 const operationsFeatures = [
   { icon: Package, title: "Product Management", description: "Organize products, categories, variants, and pricing with ease." },
@@ -89,7 +108,7 @@ function useReveal() {
   return [ref, visible];
 }
 
-function TrackLabel({ eyebrow, title, accent }) {
+function TrackLabel({ eyebrow, title, accent }:ItemProps) {
   const dot = accent === "primary" ? "bg-viz-primary" : "bg-viz-accent";
   return (
     <div className="mt-14 mb-6 flex items-center gap-3">
@@ -103,7 +122,7 @@ function TrackLabel({ eyebrow, title, accent }) {
   );
 }
 
-function FeatureCard({ icon: Icon, title, description, accent, delay, visible }) {
+function FeatureCard({ icon: Icon, title, description, accent, delay, visible }:Feature) {
   const iconBg =
     accent === "primary"
       ? "bg-viz-primary/10 text-viz-primary"
@@ -153,10 +172,35 @@ function DiscoverySeam() {
   );
 }
 
+
+
 export default function Features() {
   const [headRef, headVisible] = useReveal();
   const [opsRef, opsVisible] = useReveal();
   const [reachRef, reachVisible] = useReveal();
+
+  function useReveal(): [React.RefObject<HTMLDivElement | null>, boolean] {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return [ref, visible];
+}
 
   return (
     <section id="features" className="bg-viz-navy py-24 sm:py-28">

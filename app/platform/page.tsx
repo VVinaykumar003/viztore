@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+'use client'
+import { useState, useEffect, useRef } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import PageHero from "@/components/ui/PageHero";
@@ -9,16 +10,21 @@ import PlatformSearchFlow from "@/components/platform/PlatformSearchFlow";
 import PlatformCategories from "@/components/platform/PlatformCategories";
 import PlatformIntegrations from "@/components/platform/PlatformIntegrations"
 
-export const metadata: Metadata = {
-  title: "Platform — Viztore",
-  description:
-    "Manage your business, discover customers, source inventory, and deliver better shopping experiences — all from one connected platform.",
-};
+
 
 export default function PlatformPage() {
+    // In the page that renders <Hero> and <Navbar> together
+  const [heroHeight, setHeroHeight] = useState(0);
+  const heroRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    if (heroRef.current) {
+      setHeroHeight(heroRef.current.offsetHeight);
+    }
+  }, []);
   return (
     <>
-      <Navbar />
+     <Navbar heroHeight={heroHeight} />
       <main>
         <PageHero
           badge="The Platform"
