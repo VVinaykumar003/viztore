@@ -15,9 +15,9 @@ const ecosystem = [
 
 export default function PlatformEcosystem() {
   return (
-    <section className="py-24 sm:py-28">
+    <section className="py-24 sm:py-28 lg:py-14">
       <div className="container-viz">
-        <SectionHeading eyebrow="The Ecosystem" title="Everything Connected." />
+        <SectionHeading eyebrow="" title="Everything Connected." />
         <div className="mt-14">
           <FlowSteps steps={ecosystem} />
         </div>

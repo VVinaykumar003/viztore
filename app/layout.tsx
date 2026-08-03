@@ -58,8 +58,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="viztore" className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} h-full antialiased`} >
-      <body className="font-sans antialiased">{children}</body>
+    <html lang="en" data-theme="viztore" className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} h-full antialiased no-scrollbar`} >
+      <body className="font-sans antialiased element no-scrollbar">{children}</body>
     </html>
   );
 }

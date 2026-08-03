@@ -46,15 +46,15 @@ const reasons = [
 
 export default function WhyChooseUs() {
   return (
-    <section id="why-choose-us" className="py-24 sm:py-28">
+    <section id="why-choose-us" className="py-24 sm:py-28 lg:py-16">
       <div className="container-viz">
         <SectionHeading
-          eyebrow="Why Viztore" // Keeping the eyebrow as it is
-          title="Why Viztore is the Future of Local Retail"
+          eyebrow="" // Keeping the eyebrow as it is
+          title="Why Viztore is the Future of Local Retail?"
           description="Discover how Viztore empowers local businesses to thrive in the digital age."
         />
 
-        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {reasons.map((reason, i) => (
             <FeatureCard
               key={reason.title}

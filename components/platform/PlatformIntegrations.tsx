@@ -24,11 +24,11 @@ const integrations = [
 
 export default function PlatformIntegrations() {
   return (
-    <section className="bg-viz-bg-2 py-24 sm:py-28">
+    <section className="bg-viz-bg-2 py-24 sm:py-28  lg:py-14">
       <div className="container-viz">
         <SectionHeading
-          eyebrow="Integrations"
-          title="Works with Your Favorite Tools"
+          eyebrow=""
+          title="Works with Your Favorite Tools."
         />
 
         <div className="mt-14 flex flex-wrap items-center justify-center gap-4">

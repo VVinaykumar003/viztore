@@ -116,11 +116,11 @@ export default function PageHero({
   benefits,
 }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden bg-viz-navy pb-20 pt-40 sm:pt-44">
+    <section className="relative overflow-hidden bg-viz-navy pb-20 lg:pt-20 sm:pt-44">
       <div className="pointer-events-none absolute -left-32 top-10 h-96 w-96 rounded-full bg-viz-primary/30 blur-[120px]" />
       <div className="pointer-events-none absolute -right-24 top-40 h-80 w-80 rounded-full bg-viz-accent/20 blur-[100px]" />
 
-      <div className="container-viz relative grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+      <div className="container-viz relative grid grid-cols-1 items-center gap-12 lg:gap-3   lg:grid-cols-2">
         {/* Left Side: Heading + Text + Buttons */}
         <div className="flex flex-col items-start justify-start text-left">
           <motion.div
@@ -138,10 +138,10 @@ export default function PageHero({
             <p className="mt-6 text-base leading-relaxed text-slate-300 sm:text-lg">
               {description}
             </p>
-            <div className="mt-8 flex flex-col items-start justify-start gap-3 sm:flex-row">
+            {/* <div className="mt-8 flex flex-col items-start justify-start gap-3 sm:flex-row">
               <Button variant="primary">{primaryLabel}</Button>
               <Button variant="secondary-dark">{secondaryLabel}</Button>
-            </div>
+            </div> */}
           </motion.div>
         </div>
 {benefits && (

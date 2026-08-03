@@ -34,9 +34,9 @@ const categories = [
 
 export default function PlatformCategories() {
   return (
-    <section className="py-24 sm:py-28">
+    <section className="py-24 sm:py-28  lg:py-14">
       <div className="container-viz">
-        <SectionHeading eyebrow="Every Category" title="Designed for Every Retail Business" />
+        <SectionHeading eyebrow="" title="Designed for Every Retail Business." />
 
         <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
           {categories.map((cat, i) => (

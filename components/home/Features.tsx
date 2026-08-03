@@ -225,7 +225,7 @@ export default function Features() {
         </div>
 
         <div ref={opsRef}>
-          <TrackLabel eyebrow="Track 01" title="Inside Your Store" accent="primary" />
+          <TrackLabel eyebrow="" title="Inside Your Store" accent="primary" />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {operationsFeatures.map((f, i) => (
               <FeatureCard
@@ -242,7 +242,7 @@ export default function Features() {
         <DiscoverySeam />
 
         <div ref={reachRef}>
-          <TrackLabel eyebrow="Track 02" title="Beyond Your Door" accent="accent" />
+          <TrackLabel eyebrow="" title="Beyond Your Door" accent="accent" />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {reachFeatures.map((f, i) => (
               <FeatureCard
@@ -256,14 +256,6 @@ export default function Features() {
           </div>
         </div>
 
-        <div className="mt-14 flex justify-center">
-          <Link href="/features">
-            <button className="btn gap-2 rounded-full bg-viz-primary px-6 text-viz-navy hover:bg-viz-primary/90 border-none">
-              Explore all features
-              <ArrowUpRight size={16} />
-            </button>
-          </Link>
-        </div>
       </div>
     </section>
   );

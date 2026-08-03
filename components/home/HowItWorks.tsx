@@ -72,19 +72,19 @@ const customerSteps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="bg-viz-bg-2 py-24 sm:py-28">
-      <div className="container-viz">
+    <section id="how-it-works" className="bg-viz-bg-2 py-24 sm:py-28 lg:py-10   ">
+      <div className="container-viz"> 
         <SectionHeading
-          eyebrow="Our Platform"
-          title="How Viztore Works"
+          eyebrow=""
+          title="How Viztore Works?"
           description="Empowering retailers with smarter operations while helping customers discover and shop locally—all through one connected platform."
         />
 
-        <div className="mt-16 grid grid-cols-1 gap-12 lg:grid-cols-2">
+        <div className="mt-8 grid grid-cols-1 gap-12 lg:grid-cols-2">
           {/* For Retailers */}
-          <div className="rounded-3xl border border-viz-border p-8">
+          <div className="rounded-3xl border border-viz-border p-4">
             <h3 className="mb-8 text-2xl font-extrabold text-viz-heading">For Retailers</h3>
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-2 ">
               {retailerSteps.map((step, i) => (
                 <FeatureCard
                   key={step.title}
@@ -98,9 +98,9 @@ export default function HowItWorks() {
           </div>
 
           {/* For Customers */}
-          <div className="rounded-3xl border border-viz-border p-8">
+          <div className="rounded-3xl border border-viz-border p-4">
             <h3 className="mb-8 text-2xl font-extrabold text-viz-heading">For Customers</h3>
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-2">
               {customerSteps.map((step, i) => (
                 <FeatureCard
                   key={step.title}

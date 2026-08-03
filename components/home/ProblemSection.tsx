@@ -5,25 +5,42 @@ import { XCircle, CheckCircle2 } from "lucide-react";
 import SectionHeading from "../ui/SectionHeading";
 
 const retailerProblems = [
-  "Invisible to Nearby Customers: Customers don't know your store has the products they need.",
-  "Inventory Remains Undiscovered: Products on your shelves never appear in online searches.",
-  "Losing Sales to E-commerce: Customers choose online platforms because local availability isn't visible.",
-  "Dependent on Walk-in Customers: Growth is limited without digital discovery and local reach.",
-  "No Instant Buying Experience: No reservation, pickup, or same-day local delivery options.",
-  "Disconnected Retail Operations: Managing inventory, orders, billing, and customers across different tools slows your business.",
+  {
+    title: "Invisible to Nearby Customers",
+    description: "Customers don't know your store has the products they need.",
+  },
+  {
+    title: "Inventory Remains Undiscovered",
+    description: "Products on your shelves never appear in online searches.",
+  },
+  {
+    title: "Losing Sales to E-commerce",
+    description: "Customers choose online platforms because local availability isn't visible.",
+  },
+  {
+    title: "Dependent on Walk-in Customers",
+    description: "Growth is limited without digital discovery and local reach.",
+  },
+  {
+    title: "No Instant Buying Experience",
+    description: "No reservation, pickup, or same-day local delivery options.",
+  },
+  {
+    title: "Disconnected Retail Operations",
+    description: "Managing inventory, orders, billing, and customers across different tools slows your business.",
+  },
 ];
 
 const customerProblems = [
-  "Don't Know Which Store Has the Product: Finding nearby product availability is still difficult.",
-  "No Real-Time Inventory Visibility: Customers can't check stock before leaving home.",
-  "Wasting Time Visiting Multiple Stores: Shopping often becomes trial and error.",
-  "Waiting for Online Deliveries: Products available nearby are often ordered online instead.",
-  "No Easy Reserve or Pickup Option: Customers can't secure products before visiting a store.",
-  "Fragmented Local Shopping Experience: Every store works independently with no unified discovery platform.",
+  { title: "Don't Know Which Store Has the Product", description: "Finding nearby product availability is still difficult." },
+  { title: "No Real-Time Inventory Visibility", description: "Customers can't check stock before leaving home." },
+  { title: "Wasting Time Visiting Multiple Stores", description: "Shopping often becomes trial and error." },
+  { title: "Waiting for Online Deliveries", description: "Products available nearby are often ordered online instead." },
+  { title: "No Easy Reserve or Pickup Option", description: "Customers can't secure products before visiting a store." },
+  { title: "Fragmented Local Shopping Experience", description: "Every store works independently with no unified discovery platform." },
 ];
-
 const insight = {
-  eyebrow: "Our Insight",
+  eyebrow: "",
   title: "The Missing Piece: Digital Discoverability",
   paragraphs: [
     "Every city already has the products people need.",
@@ -37,15 +54,16 @@ const insight = {
 
 export default function ProblemSection() {
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-18 sm:py-28 lg:py-16">
       <div className="container-viz">
 
       <SectionHeading
-        eyebrow="The Problem"
+        eyebrow=""
         title="The Challenges Facing Local Retailers and Customers"
         description="Local retailers face challenges in reaching customers, while customers struggle to find products nearby. Viztore bridges this gap by making local retail searchable, discoverable, and instantly accessible."
+        subheading="The Problem"
       />
-      <div className="container-viz grid grid-cols-1 gap-10 lg:grid-cols-3 lg:gap-8 mt-10"> {/* Increased margin-top from mt-5 to mt-10 for more separation from the heading. */}
+      <div className="container-viz grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-8 mt-10"> {/* Increased margin-top from mt-5 to mt-10 for more separation from the heading. */}
         {/* Left - Retailer Problems */}
         <motion.div
           initial={{ opacity: 0, x: -24 }}
@@ -55,13 +73,16 @@ export default function ProblemSection() {
           className="rounded-3xl border border-viz-border bg-viz-bg-2 p-8"
         >
           <h3 className="mb-6 text-xl font-extrabold text-viz-heading">
-            For Retailers: The Problem
+            For Retailers
           </h3>
           <ul className="space-y-5">
-            {retailerProblems.map((p) => (
-              <li key={p} className="flex items-start gap-3">
+            {retailerProblems.map((problem) => (
+              <li key={problem.title} className="flex items-start gap-3">
                 <XCircle size={18} className="mt-0.5 shrink-0 text-red-400" />
-                <span className="text-sm text-viz-paragraph">{p}</span>
+                <span className="text-sm text-viz-paragraph">
+                  <strong className="text-black">{problem.title}:</strong>{" "}
+                  {problem.description}
+                </span>
               </li>
             ))}
           </ul>
@@ -101,13 +122,16 @@ export default function ProblemSection() {
           className="rounded-3xl border border-viz-border bg-viz-bg-2 p-8"
         >
           <h3 className="mb-6 text-xl font-extrabold text-viz-heading">
-            For Customers: The Problem
+            For Customers
           </h3>
           <ul className="space-y-5">
-            {customerProblems.map((p) => (
-              <li key={p} className="flex items-start gap-3">
+            {customerProblems.map((problem) => (
+              <li key={problem.title} className="flex items-start gap-3">
                 <XCircle size={18} className="mt-0.5 shrink-0 text-red-400" />
-                <span className="text-sm text-viz-paragraph">{p}</span>
+                <span className="text-sm text-viz-paragraph">
+                  <strong className="text-black">{problem.title}:</strong>{" "}
+                  {problem.description}
+                </span>
               </li>
             ))}
           </ul>

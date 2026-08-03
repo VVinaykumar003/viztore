@@ -26,10 +26,10 @@ const categories = [
 
 export default function RetailCategories() {
   return (
-    <section className="bg-viz-bg-2 py-24 sm:py-28">
+    <section className="bg-viz-bg-2 py-24 sm:py-28 lg:py-16">
       <div className="container-viz">
         <SectionHeading
-          eyebrow="Every Category"
+          eyebrow=""
           title="Built for every kind of local store"
           description="Whatever you sell, Viztore adapts to your category with the right tools and storefront layout."
         />

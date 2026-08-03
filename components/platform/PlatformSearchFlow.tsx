@@ -14,10 +14,10 @@ const searchFlow = [
 
 export default function PlatformSearchFlow() {
   return (
-    <section className="bg-viz-navy py-24 sm:py-28">
+    <section className="bg-viz-navy py-24 sm:py-28 lg:py-13">
       <div className="container-viz">
         <SectionHeading
-          eyebrow="One Search"
+          eyebrow=""
           title="One Search. Endless Possibilities."
           light
         />

@@ -49,11 +49,9 @@ function FeatureCard({ icon: Icon, title, description }: typeof customerFeatures
       initial={{ y: 0 }}
       whileHover={{ y: -5 }}
       transition={{ duration: 0.2 }}
-      className="relative cursor-pointer tooltip tooltip-top"
+      className="relative cursor-pointer tooltip tooltip-top tooltip-secondary" // DaisyUI handles the tooltip visibility, added tooltip-secondary for background
+      data-tip={description} // Provide the tooltip content via data-tip
     >
-      <div className="tooltip-content bg-viz-paragraph rounded-md">
-        <div className="text-white -rotate-10 text-sm font-black">{description}</div>
-      </div>
       <GlassCard className="flex flex-col items-start gap-3 !p-6 h-full">
         <div className="flex items-center gap-3">
           <Icon size={24} className="text-viz-accent" />
@@ -68,7 +66,7 @@ export default function CustomerSection() {
   return (
     <section
       id="customer-app"
-      className="relative overflow-hidden bg-viz-navy py-24 sm:py-28"
+      className="relative overflow-hidden bg-viz-navy py-24 sm:py-28 lg:py-16"
     >
       <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-viz-primary/25 blur-[120px]" />
       <div className="pointer-events-none absolute -left-20 top-0 h-72 w-72 rounded-full bg-viz-accent/15 blur-[100px]" />
@@ -107,17 +105,20 @@ export default function CustomerSection() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="relative mx-auto h-[460px] w-full max-w-sm lg:h-[540px]"
+          className="relative mx-auto h-[460px] w-full max-w-sm lg:h-[540px] "
         >
           {/* Decorative radar rings behind the phone */}
-          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-viz-accent/20 lg:h-[340px] lg:w-[340px]" />
-          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[220px] w-[220px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-viz-accent/15 lg:h-[270px] lg:w-[270px]" />
+         <div className="pointer-events-none absolute left-1/2 top-[45%] h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-viz-accent/20 lg:h-[360px] lg:w-[360px]" />
+          <div className="pointer-events-none absolute left-1/2 top-[45%] h-[240px] w-[240px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-viz-accent/15 lg:h-[290px] lg:w-[290px]" />
+          {/* Decorative radar rings */}
+             <div className="pointer-events-none absolute left-1/2 top-[45%] h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-viz-accent/20 lg:h-[340px] lg:w-[340px]" />
+            <div className="pointer-events-none absolute left-1/2 top-[45%] h-[220px] w-[220px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-viz-accent/15 lg:h-[270px] lg:w-[270px]" />
 
           {/* Phone */}
           <motion.div
             animate={{ y: [0, -16, 0] }}
             transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute left-1/2 top-1/2 h-[400px] w-[200px] -translate-x-1/2 -translate-y-1/2 rounded-[2.5rem] border-4 border-white/10 bg-gradient-to-b from-slate-900 to-viz-navy p-2 shadow-2xl lg:h-[460px] lg:w-[230px]"
+             className="absolute left-1/2 top-[45%] h-[400px] w-[200px] -translate-x-1/2 -translate-y-1/2 rounded-[2.5rem] border-4 border-white/10 bg-gradient-to-b from-slate-900 to-viz-navy p-2 shadow-2xl lg:h-[460px] lg:w-[230px]"
           >
             <div className="flex h-full w-full flex-col rounded-[2rem] bg-gradient-to-b from-viz-accent/15 to-viz-navy p-4">
               {/* Fake status bar */}
@@ -127,15 +128,23 @@ export default function CustomerSection() {
               </div>
 
               {/* Search bar */}
-              <div className="mb-3 flex items-center gap-2 rounded-xl bg-white/10 px-3 py-2">
-                <Search size={12} className="text-slate-300" />
-                <div className="h-2 w-16 rounded-full bg-white/20" />
-              </div>
+               <motion.div
+                  animate={{ y: [0, -14, 0] }}
+                  transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+                  className="absolute -left-4 -top-2 lg:top-2"
+                >
+                  <GlassCard className="flex items-center gap-2 !p-3">
+                    <Search size={16} className="text-viz-accent" />
+                    <span className="text-xs font-medium text-white">
+                      120+ products nearby
+                    </span>
+                  </GlassCard>
+                </motion.div>
 
               {/* Product list items */}
               <div className="flex flex-col gap-2">
                 {[
-                  { icon: Package, label: "Basmati Rice 5kg", meta: "In stock" },
+                  { icon: Package, label: "Shoes", meta: "In stock" },
                   { icon: ShoppingBag, label: "Organic Honey", meta: "2 stores" },
                   { icon: Star, label: "Top rated near you", meta: "4.8 ★" },
                 ].map(({ icon: Icon, label, meta }, i) => (

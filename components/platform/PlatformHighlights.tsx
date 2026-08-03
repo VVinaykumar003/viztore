@@ -24,9 +24,9 @@ const highlights = [
 
 export default function PlatformHighlights() {
   return (
-    <section className="py-24 sm:py-28">
+    <section className="py-24 sm:py-28 lg:py-12">
       <div className="container-viz">
-        <SectionHeading eyebrow="Platform Highlights" title="Everything Working Together" />
+        <SectionHeading eyebrow="" title="Everything Working Together." />
 
         <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {highlights.map((h, i) => (

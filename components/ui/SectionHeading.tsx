@@ -9,6 +9,7 @@ interface SectionHeadingProps {
   description?: string;
   align?: "left" | "center";
   light?: boolean;
+  subheading?: string;
 }
 
 export default function SectionHeading({
@@ -17,6 +18,7 @@ export default function SectionHeading({
   description,
   align = "center",
   light = false,
+  subheading,
 }: SectionHeadingProps) {
   return (
     <motion.div
@@ -24,7 +26,7 @@ export default function SectionHeading({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`relative max-w-2xl ${
+      className={`relative max-w-3xl  ${
         align === "center" ? "mx-auto text-center" : "text-left"
       }`}
     >
@@ -58,12 +60,24 @@ export default function SectionHeading({
 
       {description && (
         <p // Increased margin-top from mt-4 to mt-6 for better spacing from the title.
-          className={`relative mt-6 text-base sm:text-lg ${
+          className={`lg:text-[0.9rem] relative mt-6 text-base sm:text-lg ${
             light ? "text-slate-300" : "text-viz-paragraph"
           }`}
         >
           {description}
         </p>
+      )}
+
+
+      {subheading && (
+        <span className="section-eyebrow relative inline-flex items-center gap-2 mt-10">
+          <span
+            className={`h-1.5 w-1.5 rounded-full ${
+              light ? "bg-viz-accent" : "bg-viz-primary"
+            }`}
+          />
+          {subheading}
+        </span>
       )}
     </motion.div>
   );

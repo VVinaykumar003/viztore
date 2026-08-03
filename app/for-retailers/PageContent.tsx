@@ -6,7 +6,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import FeatureCard from "@/components/ui/FeatureCard";
 import TimelineCard from "@/components/ui/TimelineCard";
 import CategoryCard from "@/components/ui/CategoryCard";
-import Button from "@/components/ui/Button";
+
 import {
   Store,
   PackagePlus,
@@ -197,17 +197,16 @@ export default function ForRetailersContent() {
           highlight="Grow Your Store."
           description="Everything your store needs — from daily operations to local customer discovery."
           benefits={benefits || [] }
-          primaryLabel="Join Waitlist"
-          secondaryLabel="Request Demo"
+
         />
 
       
 
         {/* How Viztore Works for Retailers */}
-        <section className="bg-viz-bg-2 py-24 sm:py-28 lg:py-[15px] pb-10">
+        <section className="bg-viz-bg-2 py-24 sm:py-28 lg:py-11 pb-10">
           <div className="container-viz">
             <SectionHeading
-              eyebrow="How Viztore Works"
+              eyebrow=""
               title="How Viztore Works for Retailers?"
               description="Everything your store needs — from daily operations to local customer discovery."
             />
@@ -227,65 +226,16 @@ export default function ForRetailersContent() {
           </div>
         </section>
 
-        {/* Powerful Features */}
-        {/* <section className="py-24 sm:py-28 lg:py-[15px]">
-          <div className="container-viz grid grid-cols-1 items-center gap-14 lg:grid-cols-2 p-10">
-            <div>
-              <SectionHeading
-                align="left"
-                eyebrow="Powerful Features"
-                title="Everything You Need to Run Your Store."
-                description="Manage your retail operations, streamline daily workflows, and grow your business — all from one connected platform."
-              />
-              <div className="mt-8 flex flex-col gap-3">
-                {featureList.map(({ icon: Icon, label }) => (
-                  <div
-                    key={label}
-                    className="flex items-center gap-3 rounded-2xl border border-viz-border bg-white px-5 py-4 shadow-sm"
-                  >
-                    <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-viz-primary/10 text-viz-primary">
-                      <Icon size={18} />
-                    </span>
-                    <span className="text-sm font-medium text-viz-heading">
-                      {label}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-8">
-                <Button variant="primary">Explore All Features</Button>
-              </div>
-            </div>
-
-            <div className="rounded-3xl border border-viz-border bg-viz-navy p-6 shadow-2xl">
-              <div className="mb-5 flex items-center justify-between">
-                <div className="flex gap-1.5">
-                  <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-viz-accent" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
-                </div>
-                <span className="text-xs text-slate-400">Viztore Dashboard</span>
-              </div>
-              <div className="grid grid-cols-3 gap-3">
-                <div className="col-span-3 h-28 rounded-2xl bg-gradient-to-br from-viz-primary/30 to-viz-primary/5" />
-                <div className="col-span-1 h-20 rounded-xl bg-white/5" />
-                <div className="col-span-1 h-20 rounded-xl bg-white/5" />
-                <div className="col-span-1 h-20 rounded-xl bg-viz-accent/20" />
-                <div className="col-span-3 h-16 rounded-xl bg-white/5" />
-              </div>
-            </div>
-          </div>
-        </section> */}
-
+     
 
         {/* Powerful Features */}
-<section className="py-24 sm:py-28 lg:py-24">
-  <div className="container-viz grid grid-cols-1 items-center gap-14 lg:grid-cols-2">
+<section className="py-24 sm:py-28 md:py-12 lg:py-17">
+  <div className="container-viz grid grid-cols-1 items-center gap-14 lg:grid-cols-2  ">
     {/* LEFT: Copy + Feature Grid */}
     <div>
       <SectionHeading
         align="left"
-        eyebrow="Powerful Features"
+        eyebrow=""
         title="Everything You Need to Run Your Store."
         description="Manage your retail operations, streamline daily workflows, and grow your business — all from one connected platform."
       />
@@ -306,9 +256,9 @@ export default function ForRetailersContent() {
         ))}
       </div>
 
-      <div className="mt-8">
+      {/* <div className="mt-8">
         <Button variant="primary">Explore All Features</Button>
-      </div>
+      </div> */}
     </div>
 
     {/* RIGHT: Browser-window mockup */}
@@ -390,11 +340,12 @@ export default function ForRetailersContent() {
         <section className="bg-viz-bg-2 py-24 sm:py-28 lg:py-[15px]">
           <div className="container-viz p-10">
             <SectionHeading
-              eyebrow="Supplier Network"
+              eyebrow=""
               title="Source Inventory Smarter."
               description="Everything you need to source inventory smarter. Discover suppliers, compare offers, manage purchases, and keep your shelves stocked — all within Viztore."
+              align="center"
             />
-            <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-16 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2 lg:grid-cols-4">
               {supplierCards.map((card, i) => (
                 <FeatureCard
                   key={card.title}
@@ -412,7 +363,7 @@ export default function ForRetailersContent() {
         <section className="py-24 sm:py-28 lg:py-[15px]">
           <div className="container-viz p-10">
             <SectionHeading
-              eyebrow="Every Category"
+              eyebrow=""
               title="Built for Every Type of Retail Business."
               description="Whatever you sell, Viztore adapts to your category with the right tools — and many more."
             /> 
@@ -428,10 +379,10 @@ export default function ForRetailersContent() {
         <section className="bg-viz-bg-2 py-24 sm:py-28 lg:py-[15px]">
           <div className="container-viz p-10">
             <SectionHeading
-              eyebrow="Why Retailers Choose Viztore"
+              eyebrow=""
               title="Built to Help Local Retailers Grow."
             />
-            <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-16 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
               {whyChoose.map((reason, i) => (
                 <FeatureCard
                   key={reason.title}

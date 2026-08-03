@@ -69,9 +69,9 @@ const columns = [
 
 export default function PlatformColumns() {
   return (
-    <section className="bg-viz-bg-2 py-24 sm:py-28">
+    <section className="bg-viz-bg-2 py-24 sm:py-28 lg:py-14">
       <div className="container-viz">
-        <SectionHeading eyebrow="Complete Coverage" title="Built for Every Part of Retail" />
+        <SectionHeading eyebrow="" title="Built for Every Part of Retail." />
 
         <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {columns.map((col, i) => (

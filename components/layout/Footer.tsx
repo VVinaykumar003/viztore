@@ -22,9 +22,9 @@ const columns = [
   {
     title: "Contact",
     links: [
-      { label: "support@viztore.com", href: "mailto:support@viztore.com" },
+      // { label: "support@viztore.com", href: "mailto:support@viztore.com" },
       { label: "+91 9407655717", href: "tel:+919876543210" },
-      { label: "Durg, India", href: "#" },
+      { label: "Bhilai Chhattisghar, India", href: "#" },
     ],
   },
 ];

@@ -6,13 +6,11 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import FeatureCard from "@/components/ui/FeatureCard";
 import TimelineCard from "@/components/ui/TimelineCard";
 import CategoryCard from "@/components/ui/CategoryCard";
-import Button from "@/components/ui/Button";
 import {
   MapPin,
   Search,
   ShoppingBag,
   Heart,
-  Clock,
   Wallet,
   ShieldCheck,
   Shirt,
@@ -26,8 +24,7 @@ import {
   Globe2,
   Scale,
   PackageCheck,
-  Truck,
-  Smartphone,
+
   Zap,
 } from "lucide-react";
 import PageHero ,{type Benefit} from "@/components/ui/PageHero";
@@ -181,10 +178,10 @@ export default function ForCustomersContent() {
 
 
         {/* Why Shop with Viztore */}
-        <section className="py-24 sm:py-28">
+        <section className="py-24 sm:py-28 lg:py-10">
           <div className="container-viz">
             <SectionHeading
-              eyebrow="Why Choose Viztore"
+              eyebrow=""
               title="Why Shop with Viztore?"
             />
             <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -202,11 +199,11 @@ export default function ForCustomersContent() {
         </section>
 
         {/* Popular Categories */}
-        <section className="bg-viz-bg-2 py-24 sm:py-28">
+        <section className="bg-viz-bg-2 py-24 sm:py-28 lg:py-10">
           <div className="container-viz">
             <SectionHeading
-              eyebrow="Popular Categories"
-              title="Explore Popular Categories"
+              eyebrow=""
+              title="Explore Popular Categories."
               description="Discover products from your favorite local stores across multiple categories." // Removed "— and many more."
             />
             <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
@@ -218,11 +215,11 @@ export default function ForCustomersContent() {
         </section>
 
         {/* How Viztore Works */}
-        <section className="py-24 sm:py-28">
+        <section className="py-24 sm:py-28 lg:py-14">
           <div className="container-viz">
             <SectionHeading
-              eyebrow="How It Works"
-              title="How Viztore Works."
+              eyebrow=""
+              title="How Viztore Works?"
             />
             <div className="mt-16 flex flex-col gap-12 md:flex-row md:gap-4">
               {steps.map((step, i) => (
@@ -241,7 +238,7 @@ export default function ForCustomersContent() {
         </section>
 
         {/* Local + Global Search */}
-        <section className="relative overflow-hidden bg-viz-navy py-24 sm:py-28 mb-10">
+        <section className="relative overflow-hidden bg-viz-navy py-24 sm:py-28 mb-10 ">
           <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-viz-primary/25 blur-[120px]" />
           <div className="pointer-events-none absolute -left-20 top-0 h-72 w-72 rounded-full bg-viz-accent/15 blur-[100px]" />
 

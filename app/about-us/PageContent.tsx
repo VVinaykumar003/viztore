@@ -189,7 +189,7 @@ useEffect(() => {
         {/* Our Story */}
         <section className="py-10 sm:py-10 lg:py-10">
           <div className="container-viz">
-            <SectionHeading eyebrow="Our Story" title="Our Story" />
+            <SectionHeading eyebrow="" title="Our Story" />
             <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-3">
               {story.map((item, i) => (
                 <FeatureCard
@@ -211,9 +211,9 @@ useEffect(() => {
 
   <div className="container-viz relative">
     <div className="mx-auto max-w-4xl">
-      <span className="badge-eyebrow border-white/15 bg-white/5 text-viz-accent">
+      {/* <span className="badge-eyebrow border-white/15 bg-white/5 text-viz-accent">
         Our Belief
-      </span>
+      </span> */}
 
       <div className="mt-10 flex gap-6 sm:gap-10">
         {/* Vertical accent line */}
@@ -250,7 +250,7 @@ useEffect(() => {
       {/* Our Values */}
 <section className="bg-viz-bg-2 py-10 sm:py-10 lg:py-10">
   <div className="container-viz">
-    <SectionHeading eyebrow="Our Values" title="Our Values" />
+    <SectionHeading eyebrow="" title="Our Values" />
 
     <div className="mt-16 flex flex-wrap justify-center gap-6">
       {values.map((item, i) => (
@@ -271,9 +271,9 @@ useEffect(() => {
 </section>
 
         {/* Why We Started */}
-        <section className="bg-viz-bg-2 py-24 sm:py-28 lg:py-[15px]">
+        <section className="bg-white py-24 sm:py-28 lg:py-12 ">
           <div className="container-viz mx-auto max-w-3xl text-center">
-            <SectionHeading eyebrow="Why We Started" title="Why We Started" />
+            <SectionHeading eyebrow="" title="Why We Started?" />
             <div className="mt-16 grid grid-cols-1 gap-6">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -321,8 +321,8 @@ useEffect(() => {
         <section className="bg-viz-bg-2 py-10 sm:py-10 lg:py-10">
           <div className="container-viz">
             <SectionHeading
-              eyebrow="What We're Building"
-              title="One Connected Retail Ecosystem"
+              eyebrow=""
+              title="One Connected Retail Ecosystem."
               description="Viztore is more than a retail management platform. We're building the digital infrastructure that connects every part of local commerce."
             />
             <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -353,7 +353,7 @@ useEffect(() => {
         {/* The Road Ahead */}
       <section className="py-10 sm:py-10 lg:py-10">
   <div className="container-viz">
-    <SectionHeading eyebrow="The Road Ahead" title="The Road Ahead" />
+    <SectionHeading eyebrow="" title="The Road Ahead" />
 
     <div className="mt-16 relative">
       {/* Center line (desktop) / Left line (mobile) */}
@@ -398,7 +398,7 @@ useEffect(() => {
         {/* Why Viztore Matters */}
         <section className="bg-viz-bg-2 py-10 sm:py-10 lg:py-10">
           <div className="container-viz">
-            <SectionHeading eyebrow="Why Viztore Matters" title="Why Viztore Matters" />
+            <SectionHeading eyebrow="" title="Why Viztore Matters?" />
             <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {whyMatters.map((item, i) => (
                 <FeatureCard
