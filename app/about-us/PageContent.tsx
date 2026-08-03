@@ -189,7 +189,7 @@ useEffect(() => {
         {/* Our Story */}
         <section className="py-10 sm:py-10 lg:py-10">
           <div className="container-viz">
-            <SectionHeading eyebrow="" title="Our Story" />
+            <SectionHeading eyebrow="" title="Our Story." />
             <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-3">
               {story.map((item, i) => (
                 <FeatureCard
