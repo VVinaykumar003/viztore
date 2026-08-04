@@ -54,7 +54,7 @@ const insight = {
 
 export default function ProblemSection() {
   return (
-    <section className="py-18 sm:py-28 lg:py-16">
+    <section className="py-14 sm:py-28 lg:py-16">
       <div className="container-viz">
 
       <SectionHeading

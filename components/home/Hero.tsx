@@ -14,18 +14,20 @@ export default function Hero() {
         from-[#020A2A]
         via-[#061755]
         to-[#0A225F]    
-        pt-24
+       pt-20
+        lg:pt-0
         sm:pt-70
+  
       "
     >
       {/* Blue Glow */}
-      <div className="pointer-events-none absolute -left-40 top-0 h-[34rem] w-[34rem] rounded-full bg-[#256BFF]/20 blur-[160px]" />
+      {/* <div className="pointer-events-none absolute -left-40 top-0 h-[34rem] w-[34rem] rounded-full bg-[#256BFF]/20 blur-[160px]" /> */}
 
       {/* Secondary Blue Glow */}
-      <div className="pointer-events-none absolute right-0 top-40 h-[30rem] w-[30rem] rounded-full bg-[#1958E0]/15 blur-[150px]" />
+      {/* <div className="pointer-events-none absolute right-0 top-40 h-[30rem] w-[30rem] rounded-full bg-[#1958E0]/15 blur-[150px]" /> */}
 
       {/* Yellow Accent Glow */}
-      <div className="pointer-events-none absolute right-32 bottom-10 h-56 w-56 rounded-full bg-[#FACB0A]/10 blur-[120px]" />
+      {/* <div className="pointer-events-none absolute right-32 bottom-10 h-56 w-56 rounded-full bg-[#FACB0A]/10 blur-[120px]" /> */}
 
       <div className="relative grid grid-cols-1 items-center gap-16 lg:grid-cols-1">
         {/* Right column - phone/desktop mockup */}
@@ -48,9 +50,10 @@ export default function Hero() {
           <Image
             src="/images/w_desktop_image.png"
             alt="Viztore Dashboard"
-            fill
+            width={1600}
+            height={900} 
             priority
-            className="hidden object-fill object-center rounded-md lg:block"
+            className="hidden object-cover object-top rounded-md lg:block"
           />
         </motion.div>
       </div>
