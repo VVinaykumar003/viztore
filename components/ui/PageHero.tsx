@@ -116,7 +116,7 @@ export default function PageHero({
   benefits,
 }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden bg-viz-navy pb-20 lg:pt-20 sm:pt-44">
+    <section className="relative overflow-hidden bg-viz-navy pb-20 pt-20 lg:pt-20 sm:pt-44">
       <div className="pointer-events-none absolute -left-32 top-10 h-96 w-96 rounded-full bg-viz-primary/30 blur-[120px]" />
       <div className="pointer-events-none absolute -right-24 top-40 h-80 w-80 rounded-full bg-viz-accent/20 blur-[100px]" />
 
