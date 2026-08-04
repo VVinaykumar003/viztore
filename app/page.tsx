@@ -13,22 +13,18 @@ import WhyChooseUs from "@/components/home/WhyChooseUs";
 import { useState, useEffect, useRef } from "react";
 
 export default function Home() {
-  const [heroHeight, setHeroHeight] = useState(0);
+
   const heroRef = useRef<HTMLDivElement>(null); // Explicitly type the ref to HTMLDivElement
 
-  useEffect(() => {
-    if (heroRef.current) {
-      setHeroHeight(heroRef.current.offsetHeight);
-    }
-  }, []);
+
 
   return (
     <>
-      <Navbar heroHeight={heroHeight} />
+      <Navbar />
       <main > {/* Adjust padding to match Navbar height (h-18 = 72px) */}
         {/* Pass the ref to the Hero component */}
         <div ref={heroRef}>
-          <Hero onHeroHeightChange={setHeroHeight}  />
+          <Hero />
         </div>
         {/* <TrustedBrands /> */}
         <ProblemSection />

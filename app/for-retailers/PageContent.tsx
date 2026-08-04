@@ -188,7 +188,7 @@ export default function ForRetailersContent() {
   }, []);
   return (
     <>
-      <Navbar heroHeight={heroHeight} />
+      <Navbar />
       <main >
         {/* Hero */}
           <PageHero

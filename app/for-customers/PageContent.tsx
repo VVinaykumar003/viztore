@@ -161,7 +161,7 @@ export default function ForCustomersContent() {
   }, []);
   return (
     <>
-      <Navbar heroHeight={heroHeight} />
+      <Navbar  />
       <main>
  {/* Hero */}
      

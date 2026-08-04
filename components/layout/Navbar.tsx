@@ -1,10 +1,10 @@
+// components/Navbar.tsx
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
-import Button from "@/components/ui/Button";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -13,133 +13,170 @@ const navLinks = [
   { label: "Platform", href: "/platform" },
   { label: "About Us", href: "/about-us" },
 ];
-interface NavbarProps {
-  heroHeight?: number;
-}
 
+const HERO_THRESHOLD = 800; // px scrolled before navbar is considered "past hero"
+const LG_BREAKPOINT = 1024; // matches Tailwind's `lg`
 
-export default function Navbar({ heroHeight = 0 }: NavbarProps) {
-  const [scrolled, setScrolled] = useState(false);
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [pastHero, setPastHero] = useState(false); // New state for tracking if hero is passed
+export default function Navbar() {
+  const pathname = usePathname();
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+  const [pastHero, setPastHero] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 20);
-      setPastHero(window.scrollY > heroHeight); // Update based on heroHeight
+    const handleResize = () => setIsLargeScreen(window.innerWidth >= LG_BREAKPOINT);
+    const handleScroll = () => setPastHero(window.scrollY > HERO_THRESHOLD);
+
+    handleResize();
+    handleScroll();
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
     };
-    onScroll();
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [heroHeight]); // Re-run effect if heroHeight changes
+  }, []);
+
+  const logoSrc =
+    isLargeScreen && !pastHero
+      ? "/images/lightLogo.png" // Desktop: before hero, light logo
+      : "/images/darkLogo.png"; // Desktop: past hero, dark logo; Mobile: always dark logo
+
+  // Navbar surface: transparent over hero on desktop, white once scrolled or on mobile
+  const navSurface =
+    isLargeScreen && !pastHero
+      ? "bg-transparent"
+      : "bg-white shadow-sm";
+
+  const linkTextColor =
+    isLargeScreen && !pastHero ? "text-white" : "text-slate-500";
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300  ${
-        scrolled
-          ? "border-b border-viz-border bg-white/90 shadow-sm backdrop-blur-md"
-          : "bg-transparent"
-      } ${pastHero ? "bg-white/90 shadow-sm backdrop-blur-md" : ""}`}
-    >
-      <nav className="container-viz flex h-18 items-center justify-between">
-        <Link href="/" className="flex items-center">
-          <Image
-            src={scrolled ? "/images/darkLogo.png" : "/images/lightLogo.png"}
-            alt="Viztore"
-            width={140}
-            height={160}
-            priority
-            className="h-19 w-auto pl-4"
-          />
-        </Link>
+    <div className="drawer drawer-end">
+      <input id="mobile-drawer" type="checkbox" className="drawer-toggle" />
 
-        <div
-          className={`hidden items-center gap-8 lg:flex pr-5 ${
-            scrolled ? "text-viz-heading" : "text-white/90"
-          }`}
+      {/* ---------- Navbar bar ---------- */}
+      <div className="drawer-content">
+        <nav
+          className={`fixed top-0 inset-x-0 z-50 transition-colors duration-300 ${navSurface}`}
         >
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className="text-sm font-medium transition-colors hover:text-viz-accent"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
+          <div className="navbar mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            {/* Logo */}
+            <div className="navbar-start">
+              <Link href="/" className="flex items-center">
+                <Image
+                  src={logoSrc}
+                  alt="Logo"
+                  width={140}
+                  height={36}
+                  priority
+                  className="h-9 w-auto"
+                />
+              </Link>
+            </div>
 
-        {/* <div className="hidden items-center gap-3 lg:flex">
-          <button
-            className={`text-sm font-semibold transition-colors ${
-              scrolled ? "text-viz-heading hover:text-viz-primary" : "text-white hover:text-viz-accent"
-            }`}
-          >
-            Login
-          </button>
-          <Button variant="primary" className="!px-5 !py-2.5">
-            Join Waitlist
-          </Button>
-        </div> */}
+            {/* Desktop links */}
+            <div className="navbar-end  w-full hidden lg:flex">
+              <ul className="menu menu-horizontal gap-1 px-1">
+                {navLinks.map((link) => {
+                  const isActive = pathname === link.href;
+                  return (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className={`rounded-btn font-medium transition-colors ${
+                          isActive
+                            ? "text-viz-primary"
+                            : `${linkTextColor} hover:text-viz-primary`
+                        }`}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
 
-        <button
-          className={`lg:hidden ${scrolled ? "text-viz-heading" : "text-white"}`}
-          onClick={() => setDrawerOpen(true)}
-          aria-label="Open menu"
-        >
-          <Menu size={26} />
-        </button>
-      </nav>
+            {/* Desktop CTA + Mobile hamburger */}
+            <div className="navbar-end gap-2  lg:hidden">
+             
 
-      {/* Mobile Drawer */}
-      <div
-        className={`fixed inset-0 z-50 transition-opacity duration-300 lg:hidden ${
-          drawerOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
-        }`}
-      >
-        <div
-          className="absolute inset-0 bg-viz-navy/60 backdrop-blur-sm"
-          onClick={() => setDrawerOpen(false)}
+              <label
+                htmlFor="mobile-drawer"
+                aria-label="Open menu"
+                className={`btn btn-square btn-ghost lg:hidden ${linkTextColor}`}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </label>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      {/* ---------- Mobile side drawer ---------- */}
+      <div className="drawer-side z-[60]">
+        <label
+          htmlFor="mobile-drawer"
+          aria-label="Close menu"
+          className="drawer-overlay"
         />
-        <div
-          className={`absolute right-0 top-0 h-full w-72 transform bg-white p-6 shadow-2xl transition-transform duration-300 ${
-            drawerOpen ? "translate-x-0" : "translate-x-full"
-          }`}
-        >
-          <div className="mb-8 flex items-center justify-between">
+        <div className="menu bg-white min-h-full w-72 p-6 flex flex-col">
+          <div className="flex items-center justify-between mb-8">
             <Image
               src="/images/darkLogo.png"
-              alt="Viztore"
+              alt="Logo"
               width={120}
-              height={34}
+              height={32}
               className="h-8 w-auto"
             />
-            <button onClick={() => setDrawerOpen(false)} aria-label="Close menu">
-              <X size={24} className="text-viz-heading" />
-            </button>
+            <label
+              htmlFor="mobile-drawer"
+              aria-label="Close menu"
+              className="btn btn-sm btn-circle btn-ghost text-slate-500"
+            >
+              ✕
+            </label>
           </div>
-          <div className="flex flex-col gap-5">
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                onClick={() => setDrawerOpen(false)}
-                className="text-base font-medium text-viz-heading hover:text-viz-primary"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-          <div className="mt-8 flex flex-col gap-3">
-            <Button variant="secondary" className="w-full">
-              Login
-            </Button>
-            <Button variant="primary" className="w-full">
-              Join Waitlist
-            </Button>
-          </div>
+
+          <ul className="flex flex-col gap-1">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <li key={link.href}>
+                  <label htmlFor="mobile-drawer">
+                    <Link
+                      href={link.href}
+                      className={`block rounded-btn px-3 py-3 text-base font-medium transition-colors ${
+                        isActive
+                          ? "bg-viz-primary/10 text-viz-primary"
+                          : "text-slate-500 hover:bg-slate-100"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  </label>
+                </li>
+              );
+            })}
+          </ul>
+
+          
         </div>
       </div>
-    </header>
+    </div>
   );
 }

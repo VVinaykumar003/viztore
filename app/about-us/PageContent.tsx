@@ -165,7 +165,7 @@ useEffect(() => {
 }, []);
   return (
     <>
-     <Navbar heroHeight={heroHeight} />
+     <Navbar />
       <main>
         {/* Hero Section */}
        

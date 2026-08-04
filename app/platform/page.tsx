@@ -24,7 +24,7 @@ export default function PlatformPage() {
   }, []);
   return (
     <>
-     <Navbar heroHeight={heroHeight} />
+     <Navbar  />
       <main>
         <PageHero
           badge="The Platform"
